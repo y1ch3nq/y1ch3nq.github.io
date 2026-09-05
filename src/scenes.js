@@ -71,52 +71,70 @@ export function initHeroWaterScene(canvas) {
           for (int i=0; i<5; i++) { v += a*noise(p); p = p*2.03 + 17.7; a *= .5; }
           return v;
         }
+        float rippleHeight(vec2 uv, float aspect, float t) {
+          float value = 0.0;
+          for (int i=0; i<8; i++) {
+            float age = t-uRipples[i].z;
+            vec2 rp = uv-uRipples[i].xy;
+            rp.x *= aspect;
+            float d = length(rp);
+            value += sin(d*82.0-age*7.5) * exp(-d*8.5) * exp(-age*.62)
+              * step(0.0,age) * step(age,7.0);
+          }
+          return value;
+        }
+        float waterHeight(vec2 p, vec2 uv, float aspect, float t) {
+          float h = sin(p.x*4.2+t*.46)*.34;
+          h += sin(p.y*5.1-t*.38)*.27;
+          h += sin((p.x+p.y)*7.8+t*.31)*.18;
+          h += sin(length(p+vec2(.8,-.3))*11.0-t*.55)*.09;
+          h += (fbm(p*2.1+vec2(t*.035,-t*.025))-.5)*.32;
+          h += rippleHeight(uv,aspect,t)*.42;
+          return h;
+        }
+        vec3 sky(vec2 q, float aspect, float t) {
+          vec3 horizon = vec3(.48,.80,.93);
+          vec3 zenith = vec3(.08,.42,.72);
+          vec3 color = mix(horizon,zenith,smoothstep(-.08,1.05,q.y));
+          vec2 cp = vec2(q.x*aspect,q.y)*1.42+vec2(t*.006,0.0);
+          float broad = fbm(cp*.78+vec2(1.7,4.2));
+          float detail = fbm(cp*2.15+vec2(broad*1.5,0.0));
+          float clouds = smoothstep(.48,.68,broad*.68+detail*.48);
+          clouds *= smoothstep(-.08,.32,q.y);
+          color = mix(color,vec3(.94,.98,1.0),clouds*.88);
+          vec2 sunDelta = q-vec2(.73,.72); sunDelta.x *= aspect;
+          float sun = exp(-length(sunDelta)*13.0);
+          color += vec3(1.0,.97,.83)*sun*.72;
+          return color;
+        }
         void main() {
           vec2 uv = vUv;
           float aspect = uResolution.x / max(uResolution.y, 1.0);
           vec2 p = (uv-.5)*vec2(aspect,1.0);
           float t = uTime;
 
-          vec2 wave = vec2(
-            sin(p.y*18.0+t*.65)+sin((p.x+p.y)*11.0-t*.48),
-            cos(p.x*16.0-t*.55)+sin((p.x-p.y)*13.0+t*.42)
-          ) * .0055;
-          wave += (uPointer-.5) * .012;
-          float rings = 0.0;
-          for (int i=0; i<8; i++) {
-            float age = t-uRipples[i].z;
-            vec2 rp = uv-uRipples[i].xy;
-            rp.x *= aspect;
-            float d = length(rp);
-            float ring = sin(d*105.0-age*5.8) * exp(-d*7.0) * exp(-age*.72);
-            ring *= step(0.0,age) * step(age,6.0);
-            rings += ring;
-            wave += normalize(rp+vec2(.0001)) * ring * .009;
-          }
+          float eps = .0035;
+          float h = waterHeight(p,uv,aspect,t);
+          float hx = waterHeight(p+vec2(eps,0.0),uv+vec2(eps/aspect,0.0),aspect,t)-h;
+          float hy = waterHeight(p+vec2(0.0,eps),uv+vec2(0.0,eps),aspect,t)-h;
+          vec3 normal = normalize(vec3(-hx/eps*.12,-hy/eps*.12,1.0));
+          vec3 viewDir = normalize(vec3(p*.46,1.0));
+          float fresnel = .03+.55*pow(1.0-max(dot(normal,viewDir),0.0),3.2);
+          vec2 refraction = normal.xy*.048 + (uPointer-.5)*.004;
+          vec2 q = uv+refraction;
+          vec3 col = sky(q,aspect,t);
+          vec3 reflection = sky(uv-normal.xy*.07+vec2(.02,.025),aspect,t)*vec3(.72,.88,1.0);
+          col = mix(col,reflection,fresnel);
 
-          vec2 q = uv + wave;
-          vec3 skyTop = vec3(.12,.52,.78);
-          vec3 skyLow = vec3(.59,.87,.94);
-          vec3 col = mix(skyLow, skyTop, smoothstep(.0,1.0,q.y));
-
-          vec2 cloudUv = vec2(q.x*aspect, q.y)*2.1 + vec2(t*.008,0.0);
-          float cloud = fbm(cloudUv*1.45 + fbm(cloudUv*.7));
-          cloud = smoothstep(.52,.73,cloud) * smoothstep(.03,.36,q.y);
-          col = mix(col, vec3(.96,.99,1.0), cloud*.88);
-
-          vec2 sunPos = vec2(.76,.73);
-          vec2 sunDelta = q-sunPos; sunDelta.x *= aspect;
-          float sun = exp(-length(sunDelta)*9.0);
-          col += vec3(.78,.94,1.0)*sun*.55;
-
-          float surface = sin(q.x*32.0+t*.6)*sin(q.y*25.0-t*.45);
-          surface += sin((q.x+q.y)*48.0-t*.8)*.35 + rings*1.5;
-          float glint = pow(max(0.0, surface*.5+.5), 10.0);
-          col += vec3(.72,.96,1.0)*glint*.18;
-          col = mix(col, vec3(.04,.38,.63), .13 + (1.0-q.y)*.13);
-          float vignette = smoothstep(.82,.18,length(p*vec2(.72,1.0)));
-          col *= .78 + .22*vignette;
-          col += vec3(.1,.5,.66)*rings*.08;
+          vec3 lightDir = normalize(vec3(.42,.34,.84));
+          vec3 halfDir = normalize(lightDir+viewDir);
+          float specular = pow(max(dot(normal,halfDir),0.0),90.0);
+          float softSpec = pow(max(dot(normal,halfDir),0.0),14.0);
+          col += vec3(1.0,.98,.9)*specular*.92 + vec3(.36,.76,.92)*softSpec*.12;
+          float depthTint = .10+.10*(1.0-uv.y);
+          col = mix(col,vec3(.025,.31,.54),depthTint);
+          float vignette = smoothstep(1.05,.18,length(p*vec2(.68,.9)));
+          col *= .82+.18*vignette;
           gl_FragColor = vec4(col,1.0);
         }
       `,

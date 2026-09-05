@@ -8,6 +8,8 @@ The experience pairs a clear resume-like information flow with purposeful 3D int
 - A portable music player that browses selected projects
 - A piano that reveals skill categories and plays notes
 
+The homepage water uses the height-field simulation from `jeantimex/webgpu-water`; license details are preserved in `THIRD_PARTY_NOTICES.md` and `WATER_MODEL_LICENSE`.
+
 ## Local development
 
 ```bash

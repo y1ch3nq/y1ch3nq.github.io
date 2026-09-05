@@ -1,5 +1,6 @@
 import "./styles.css";
-import { initHeroWaterScene, initWalkmanScene, initPianoScene } from "./scenes.js";
+import { initWalkmanScene, initPianoScene } from "./scenes.js";
+import { initPortfolioWater } from "./waterModel.ts";
 
 const translations = {
   zh: {
@@ -273,7 +274,7 @@ document.querySelectorAll("main > section[id]").forEach((section) => sectionObse
 
 document.querySelector("#year").textContent = new Date().getFullYear();
 setLanguage("en");
-initHeroWaterScene(document.querySelector("#hero-water-canvas"));
+initPortfolioWater(document.querySelector("#hero-water-canvas"));
 initWalkmanScene(document.querySelector("#walkman-canvas"), {
   onPrevious: () => changeTrack(-1),
   onNext: () => changeTrack(1),

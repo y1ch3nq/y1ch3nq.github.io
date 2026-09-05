@@ -9,7 +9,10 @@
     "preview": "vite preview --host 0.0.0.0"
   },
   "dependencies": {
-    "three": "^0.180.0"
+    "@webgpu/types": "^0.1.72",
+    "three": "^0.180.0",
+    "vite-plugin-glsl": "^1.6.1",
+    "wgpu-matrix": "^3.4.2"
   },
   "devDependencies": {
     "vite": "^7.1.4"
