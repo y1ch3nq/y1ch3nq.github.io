@@ -109,7 +109,7 @@ const hobbyChannels = {
   }
 };
 
-let language = "zh";
+let language = "en";
 let activeProject = "lrc";
 let activeChannel = "music";
 
@@ -139,7 +139,7 @@ function renderProject(key) {
 function setLanguage(next) {
   language = next;
   document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
-  document.querySelector("#language-toggle").textContent = language === "zh" ? "EN" : "中文";
+  document.querySelector("#language-toggle").textContent = language === "zh" ? "EN" : "ZH";
   document.querySelectorAll("[data-i18n]").forEach((element) => {
     const key = element.dataset.i18n;
     if (i18n[language][key]) element.textContent = i18n[language][key];
@@ -235,5 +235,4 @@ const revealObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.12 });
 document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
 
-renderProject("lrc");
-renderChannel("music");
+setLanguage("en");
