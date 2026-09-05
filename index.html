@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Zoey Yichen Qian 的个人作品集：跨文化内容运营、AI 内容工作流、音乐与媒介研究。"
+    />
+    <meta name="theme-color" content="#f6efff" />
+    <title>Zoey Qian — Content & Creative Tech</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700;800&family=Pixelify+Sans:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到主要内容</a>
+
+    <svg class="icon-sprite" aria-hidden="true">
+      <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 11 9-8 9 8v10h-6v-6H9v6H3Z" /></symbol>
+      <symbol id="i-work" viewBox="0 0 24 24"><path d="M9 6V4h6v2h6v14H3V6Zm2 0h2V5h-2Zm-6 5v7h14v-7l-6 3h-2Zm0-3v1l7 3 7-3V8Z" /></symbol>
+      <symbol id="i-folder" viewBox="0 0 24 24"><path d="M2 5h8l2 2h10v13H2Zm2 4v9h16V9Z" /></symbol>
+      <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 2.1 6.9L21 11l-6.9 2.1L12 20l-2.1-6.9L3 11l6.9-2.1ZM5 2l.8 2.2L8 5l-2.2.8L5 8l-.8-2.2L2 5l2.2-.8Zm14 14 .8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8Z" /></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 21 3.2 12.2A5.4 5.4 0 0 1 10.8 4l1.2 1.2L13.2 4a5.4 5.4 0 0 1 7.6 7.6Z" /></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24"><path d="M2 5h20v14H2Zm2 2v1l8 5 8-5V7Zm16 10v-7l-8 5-8-5v7Z" /></symbol>
+      <symbol id="i-github" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.2 19.5v-2.2c-2.6.6-3.1-1.1-3.1-1.1-.4-1.1-1-1.4-1-1.4-.9-.6 0-.6 0-.6 1 0 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.8.8.1-.7.4-1.1.7-1.3-2.1-.2-4.3-1-4.3-4.7 0-1 .4-1.9 1-2.6-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.8 1A9.5 9.5 0 0 1 12 7.5a9.5 9.5 0 0 1 2.7.4c2-1.3 2.8-1 2.8-1 .5 1.3.2 2.3.1 2.6.6.7 1 1.6 1 2.6 0 3.7-2.2 4.5-4.3 4.7.3.3.7.9.7 1.8v2.9A10 10 0 0 0 12 2Z" /></symbol>
+      <symbol id="i-download" viewBox="0 0 24 24"><path d="M11 3h2v10l3-3 1.5 1.5L12 17l-5.5-5.5L8 10l3 3ZM4 18h16v3H4Z" /></symbol>
+      <symbol id="i-external" viewBox="0 0 24 24"><path d="M13 3h8v8h-2V6.4l-9.3 9.3-1.4-1.4L17.6 5H13ZM4 5h7v2H6v11h11v-5h2v7H4Z" /></symbol>
+      <symbol id="i-copy" viewBox="0 0 24 24"><path d="M8 7h12v14H8Zm2 2v10h8V9ZM4 3h12v2H6v12H4Z" /></symbol>
+      <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4v16l13-8Z" /></symbol>
+    </svg>
+
+    <div class="topbar" aria-label="系统栏">
+      <a class="brand" href="#home"><span class="brand-pixel">Z</span> ZOEY.OS</a>
+      <div class="topbar-right">
+        <span class="online-dot" aria-hidden="true"></span>
+        <span data-i18n="status">可联系</span>
+        <span class="topbar-divider">|</span>
+        <time id="clock" aria-label="洛杉矶时间">--:--</time>
+        <button class="text-button" id="language-toggle" type="button" aria-label="Switch language">EN</button>
+      </div>
+    </div>
+
+    <nav class="dock" aria-label="页面导航">
+      <a class="dock-item active" href="#home" data-section="home" aria-label="主页">
+        <svg><use href="#i-home" /></svg><span data-i18n="navHome">主页</span>
+      </a>
+      <a class="dock-item" href="#experience" data-section="experience" aria-label="经历">
+        <svg><use href="#i-work" /></svg><span data-i18n="navExperience">经历</span>
+      </a>
+      <a class="dock-item" href="#projects" data-section="projects" aria-label="项目">
+        <svg><use href="#i-folder" /></svg><span data-i18n="navProjects">项目</span>
+      </a>
+      <a class="dock-item" href="#skills" data-section="skills" aria-label="技能">
+        <svg><use href="#i-spark" /></svg><span data-i18n="navSkills">技能</span>
+      </a>
+      <a class="dock-item" href="#play" data-section="play" aria-label="兴趣">
+        <svg><use href="#i-heart" /></svg><span data-i18n="navPlay">兴趣</span>
+      </a>
+    </nav>
+
+    <main id="main">
+      <section id="home" class="screen hero-screen" aria-labelledby="hero-title">
+        <div class="ambient-pixels" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="hero-layout">
+          <article class="window hero-window reveal">
+            <div class="titlebar">
+              <div class="titlebar-label"><span class="mini-icon">✦</span> profile.exe</div>
+              <div class="window-controls" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div>
+            </div>
+            <div class="hero-content">
+              <div class="identity-block">
+                <div class="pixel-portrait" aria-label="ZQ 像素头像">
+                  <div class="portrait-glow"></div>
+                  <span>ZQ</span>
+                  <b>★</b>
+                </div>
+                <div class="availability"><span></span><span data-i18n="openTo">OPEN TO COLLABORATE</span></div>
+              </div>
+              <div class="hero-copy">
+                <div class="eyebrow" data-i18n="eyebrow">CONTENT · CULTURE · CREATIVE TECH</div>
+                <h1 id="hero-title">Zoey<br /><span>Yichen Qian</span></h1>
+                <p class="name-cn">钱弈辰 · USC Communication</p>
+                <p class="hero-lede" data-i18n="heroLede">
+                  我把跨文化洞察、内容运营与轻量 AI 工具连成一条工作流，让好故事更快、更准确地抵达全球受众。
+                </p>
+                <div class="hero-actions">
+                  <a class="pixel-button primary" href="#projects"><svg><use href="#i-folder" /></svg><span data-i18n="viewWork">查看项目</span></a>
+                  <a class="pixel-button" href="https://github.com/y1ch3nq" target="_blank" rel="noreferrer"><svg><use href="#i-github" /></svg>GitHub</a>
+                  <button class="pixel-button icon-only" id="copy-email" type="button" aria-label="复制邮箱"><svg><use href="#i-copy" /></svg></button>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <aside class="window status-window reveal delay-1" aria-label="成果概览">
+            <div class="titlebar compact">
+              <div class="titlebar-label"><span class="mini-icon">◉</span> work_status</div>
+              <div class="window-controls" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div>
+            </div>
+            <div class="status-body">
+              <div class="score-line"><span data-i18n="impact">IMPACT SCORE</span><strong>30K+</strong><small data-i18n="views">内容播放</small></div>
+              <div class="metric-list">
+                <div class="metric-row"><span>01</span><div><b data-i18n="metricPublishing">全球发布支持</b><small>291+ items</small></div><i style="--progress: 92%"></i></div>
+                <div class="metric-row"><span>02</span><div><b data-i18n="metricAssets">节目素材交付</b><small>200 assets</small></div><i style="--progress: 76%"></i></div>
+                <div class="metric-row"><span>03</span><div><b data-i18n="metricEfficiency">提示词效率</b><small>−67%—75%</small></div><i style="--progress: 84%"></i></div>
+              </div>
+              <div class="now-card"><span class="blink">▌</span><div><small data-i18n="nowLabel">NOW BUILDING</small><b>LRC Visualizer</b></div></div>
+            </div>
+          </aside>
+        </div>
+        <a class="scroll-cue" href="#experience"><span data-i18n="scroll">向下浏览</span><i>↓</i></a>
+      </section>
+
+      <section id="experience" class="content-section" aria-labelledby="experience-title">
+        <header class="section-heading reveal">
+          <span>01 / CAREER_LOG</span>
+          <h2 id="experience-title" data-i18n="experienceTitle">实习与成长轨迹</h2>
+          <p data-i18n="experienceIntro">从内容生产到全球渠道运营，再到为重复工作写工具：我关心创意，也关心创意如何被稳定交付。</p>
+        </header>
+
+        <article class="window experience-window reveal">
+          <div class="titlebar">
+            <div class="titlebar-label"><span class="mini-icon">▣</span> experience.log</div>
+            <div class="window-controls" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div>
+          </div>
+          <div class="timeline">
+            <div class="timeline-item featured">
+              <div class="timeline-date">2026.06 — NOW</div>
+              <div class="timeline-marker"><i></i></div>
+              <div class="timeline-card">
+                <div class="role-topline"><div><h3>Allsaints Music Group</h3><p data-i18n="allsaintsRole">内容运营实习生 · Content Operations Intern</p></div><span class="live-chip" data-i18n="current">进行中</span></div>
+                <p class="role-summary" data-i18n="allsaintsSummary">负责 Viza、The Aidols 与 Vanso 的 AI 辅助短视频制作、多语言发布支持和海外平台搭建；同时把高频手工流程做成可复用的网页工具。</p>
+                <div class="role-stats">
+                  <div><strong>16</strong><span data-i18n="statVideos">条视频内容</span></div>
+                  <div><strong>200</strong><span data-i18n="statAssets">条节目素材</span></div>
+                  <div><strong>291+</strong><span data-i18n="statOps">条发布配置</span></div>
+                  <div><strong>4</strong><span data-i18n="statAccounts">个海外账号</span></div>
+                </div>
+                <button class="details-toggle" type="button" aria-expanded="false" data-i18n="showDetails">＋ 展开职责细节</button>
+                <ul class="detail-list" hidden>
+                  <li data-i18n="detail1">为 TikTok、Instagram、YouTube 策划、生成、剪辑并发布内容，累计获得 30K+ 播放。</li>
+                  <li data-i18n="detail2">完成小米国际、Vanso、OPPO 的 Push、冷启动与定时轮询配置，支持多语言本地化。</li>
+                  <li data-i18n="detail3">负责 Vanso 英文稿件校对与 The Aidols 官方邮箱、海外平台账号的前期搭建。</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-date">2022.09 — 2024.10</div>
+              <div class="timeline-marker"><i></i></div>
+              <div class="timeline-card">
+                <div class="role-topline"><div><h3 data-i18n="magazineName">校园杂志社</h3><p data-i18n="magazineRole">主编 / 社团负责人</p></div></div>
+                <p class="role-summary" data-i18n="magazineSummary">统筹月刊内容与社交媒体运营，带领 18 人编辑团队；读者增长 30%，连续两年获得校级社团荣誉。</p>
+                <div class="tag-row"><span>EDITORIAL</span><span>COMMUNITY</span><span>TEAM OF 18</span></div>
+              </div>
+            </div>
+
+            <div class="timeline-item education-item">
+              <div class="timeline-date">2025 — 2029</div>
+              <div class="timeline-marker"><i></i></div>
+              <div class="timeline-card">
+                <div class="role-topline"><div><h3>University of Southern California</h3><p data-i18n="uscRole">传播学学士 · 预计 2029 年 5 月毕业</p></div><span class="school-chip">USC</span></div>
+                <p class="role-summary" data-i18n="uscCourse">课程关注传播科技、公众传播、人文研究与 Hip-Hop 文化。</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section id="projects" class="content-section projects-section" aria-labelledby="projects-title">
+        <header class="section-heading reveal">
+          <span>02 / PROJECT_FILES</span>
+          <h2 id="projects-title" data-i18n="projectsTitle">项目档案</h2>
+          <p data-i18n="projectsIntro">工具、内容和研究并列展示。点击左侧文件，右侧会展开问题、方法与结果。</p>
+        </header>
+
+        <article class="window project-window reveal">
+          <div class="titlebar">
+            <div class="titlebar-label"><span class="mini-icon">▤</span> projects.folder</div>
+            <div class="window-controls" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div>
+          </div>
+          <div class="project-browser">
+            <div class="project-sidebar" role="tablist" aria-label="项目列表">
+              <div class="sidebar-label" data-i18n="selectedFiles">SELECTED FILES</div>
+              <button class="project-tab active" type="button" role="tab" aria-selected="true" data-project="lrc"><span class="file-icon pink">♪</span><span><b>LRC Visualizer</b><small>PRODUCT / CODE</small></span></button>
+              <button class="project-tab" type="button" role="tab" aria-selected="false" data-project="prompt"><span class="file-icon blue">✦</span><span><b>Prompt Factory</b><small>AI WORKFLOW</small></span></button>
+              <button class="project-tab" type="button" role="tab" aria-selected="false" data-project="hiphop"><span class="file-icon yellow">♫</span><span><b>Artist Development</b><small>STRATEGY</small></span></button>
+              <button class="project-tab" type="button" role="tab" aria-selected="false" data-project="research"><span class="file-icon purple">▥</span><span><b>Media Narrative</b><small>RESEARCH</small></span></button>
+            </div>
+            <div id="project-panel" class="project-panel" role="tabpanel" aria-live="polite"></div>
+          </div>
+        </article>
+      </section>
+
+      <section id="skills" class="content-section" aria-labelledby="skills-title">
+        <header class="section-heading reveal">
+          <span>03 / TOOLBOX</span>
+          <h2 id="skills-title" data-i18n="skillsTitle">技能与工作方式</h2>
+          <p data-i18n="skillsIntro">不是把软件堆成清单，而是说明我如何把它们组合成从想法到上线的流程。</p>
+        </header>
+
+        <div class="skills-grid">
+          <article class="window skill-window reveal">
+            <div class="titlebar compact"><div class="titlebar-label">content_stack.cfg</div><div class="window-controls" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div></div>
+            <div class="skill-body"><span class="skill-number">01</span><h3 data-i18n="skillContent">内容与增长</h3><p data-i18n="skillContentDesc">选题策划 · 短视频制作 · 社媒运营 · 多语言本地化 · 受众洞察</p><div class="skill-chips"><span>TikTok</span><span>Instagram</span><span>YouTube</span><span>SEO / GEO</span></div></div>
+          </article>
+          <article class="window skill-window reveal delay-1">
+            <div class="titlebar compact"><div class="titlebar-label">creative_tools.cfg</div><div class="window-controls" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div></div>
+            <div class="skill-body"><span class="skill-number">02</span><h3 data-i18n="skillMedia">制作与设计</h3><p data-i18n="skillMediaDesc">视频剪辑 · 视觉排版 · 歌词视频 · 内容原型 · 演示表达</p><div class="skill-chips"><span>Premiere</span><span>Final Cut Pro</span><span>Canva</span><span>MS Office</span></div></div>
+          </article>
+          <article class="window skill-window reveal delay-2">
+            <div class="titlebar compact"><div class="titlebar-label">ai_workflow.cfg</div><div class="window-controls" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div></div>
+            <div class="skill-body"><span class="skill-number">03</span><h3 data-i18n="skillAI">AI 与轻量开发</h3><p data-i18n="skillAIDesc">提示词设计 · AI 素材工作流 · 浏览器端工具 · 快速测试与迭代</p><div class="skill-chips"><span>ChatGPT</span><span>Gemini</span><span>NotebookLM</span><span>TypeScript</span></div></div>
+          </article>
+          <article class="window skill-window reveal delay-3">
+            <div class="titlebar compact"><div class="titlebar-label">languages.cfg</div><div class="window-controls" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div></div>
+            <div class="skill-body"><span class="skill-number">04</span><h3 data-i18n="skillLanguage">语言与跨文化沟通</h3><p data-i18n="skillLanguageDesc">中文母语 · 英语流利（TOEFL 112）· 韩语入门 · 跨文化内容敏感度</p><div class="skill-chips"><span>中文</span><span>English</span><span>한국어</span><span>Copy QA</span></div></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="play" class="content-section play-section" aria-labelledby="play-title">
+        <header class="section-heading reveal">
+          <span>04 / AFTER_HOURS</span>
+          <h2 id="play-title" data-i18n="playTitle">下班后的频道</h2>
+          <p data-i18n="playIntro">音乐、游戏、乐器与写作不是简历边角料，它们构成了我观察圈层、情绪与叙事的方式。</p>
+        </header>
+
+        <div class="play-desktop reveal">
+          <article class="window hobby-main">
+            <div class="titlebar"><div class="titlebar-label"><span class="mini-icon">♥</span> my_favorites.exe</div><div class="window-controls" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div></div>
+            <div class="hobby-content">
+              <div class="channel-display">
+                <div class="channel-art" id="channel-art"><span>♫</span><i></i><i></i><i></i></div>
+                <div><span class="micro-label" data-i18n="currentChannel">CURRENT CHANNEL</span><h3 id="channel-title">K‑Pop & Performance</h3><p id="channel-copy" data-i18n="musicCopy">从舞台视觉到粉丝社群，关注音乐如何成为跨文化身份表达。</p></div>
+              </div>
+              <div class="channel-controls" role="group" aria-label="兴趣频道">
+                <button class="channel-button active" type="button" data-channel="music">01 <span data-i18n="music">音乐</span></button>
+                <button class="channel-button" type="button" data-channel="games">02 <span data-i18n="games">游戏</span></button>
+                <button class="channel-button" type="button" data-channel="instruments">03 <span data-i18n="instruments">乐器</span></button>
+                <button class="channel-button" type="button" data-channel="writing">04 <span data-i18n="writing">写作</span></button>
+              </div>
+            </div>
+          </article>
+
+          <aside class="window game-window">
+            <div class="titlebar compact"><div class="titlebar-label">play_time.dat</div><div class="window-controls" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div></div>
+            <div class="game-list">
+              <div><span>Sky</span><b>100H+</b><i style="--game: 94%"></i></div>
+              <div><span>Wuthering Waves</span><b>70H+</b><i style="--game: 72%"></i></div>
+              <div><span>Zelda: BOTW</span><b>70H+</b><i style="--game: 72%"></i></div>
+              <small data-i18n="gameNote">偏爱叙事型独立游戏，包括《主播女孩重度依赖》。</small>
+            </div>
+          </aside>
+
+          <aside class="window note-window">
+            <div class="titlebar compact"><div class="titlebar-label">fun_facts.txt</div><div class="window-controls" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div></div>
+            <ul>
+              <li><b data-i18n="factInstrument">三种乐器</b><span data-i18n="factInstrumentSub">钢琴 · 长号 · 古筝</span></li>
+              <li><b data-i18n="factEdit">2000+ 播放</b><span data-i18n="factEditSub">K‑Pop 女团舞台混剪</span></li>
+              <li><b data-i18n="factWriting">新概念作文二等奖</b><span>2024</span></li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section class="contact-section" aria-labelledby="contact-title">
+        <div class="window contact-window reveal">
+          <div class="titlebar"><div class="titlebar-label"><span class="mini-icon">✉</span> contact_me.exe</div><div class="window-controls" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div></div>
+          <div class="contact-body">
+            <div><span class="micro-label">END OF FILE / LET'S TALK</span><h2 id="contact-title" data-i18n="contactTitle">一起做点好看的，也做点真正有用的。</h2><p data-i18n="contactCopy">如果你正在寻找懂内容、跨文化语境，并愿意亲手把流程做顺的人，欢迎联系我。</p></div>
+            <div class="contact-actions">
+              <a class="pixel-button primary" href="mailto:zoeyqian@usc.edu"><svg><use href="#i-mail" /></svg>zoeyqian@usc.edu</a>
+              <a class="pixel-button" href="https://github.com/y1ch3nq" target="_blank" rel="noreferrer"><svg><use href="#i-github" /></svg>@y1ch3nq</a>
+              <button class="pixel-button" id="print-page" type="button"><svg><use href="#i-download" /></svg><span data-i18n="savePdf">保存为 PDF</span></button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© <span id="year">2026</span> Zoey Yichen Qian</span>
+      <span>DESIGNED WITH PIXELS &amp; PURPOSE</span>
+    </footer>
+
+    <div class="toast" id="toast" role="status" aria-live="polite">邮箱已复制</div>
+    <script src="app.js"></script>
+  </body>
+</html>
