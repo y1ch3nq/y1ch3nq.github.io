@@ -28,6 +28,147 @@ function attachResize(canvas, renderer, camera, render) {
   return observer;
 }
 
+export function initHeroWaterScene(canvas) {
+  if (!canvas) return;
+  try {
+    const renderer = rendererFor(canvas);
+    renderer.toneMapping = THREE.NoToneMapping;
+    const scene = new THREE.Scene();
+    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 2);
+    camera.position.z = 1;
+    const clock = new THREE.Clock();
+    const rippleData = Array.from({ length: 8 }, () => new THREE.Vector3(-10, -10, -100));
+    const uniforms = {
+      uTime: { value: 0 },
+      uResolution: { value: new THREE.Vector2(1, 1) },
+      uPointer: { value: new THREE.Vector2(.58, .34) },
+      uRipples: { value: rippleData },
+    };
+    const material = new THREE.ShaderMaterial({
+      uniforms,
+      depthTest: false,
+      depthWrite: false,
+      vertexShader: `
+        varying vec2 vUv;
+        void main() { vUv = uv; gl_Position = vec4(position, 1.0); }
+      `,
+      fragmentShader: `
+        precision highp float;
+        varying vec2 vUv;
+        uniform float uTime;
+        uniform vec2 uResolution;
+        uniform vec2 uPointer;
+        uniform vec3 uRipples[8];
+
+        float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1,311.7))) * 43758.5453); }
+        float noise(vec2 p) {
+          vec2 i = floor(p), f = fract(p);
+          f = f*f*(3.0-2.0*f);
+          return mix(mix(hash(i), hash(i+vec2(1,0)), f.x), mix(hash(i+vec2(0,1)), hash(i+vec2(1)), f.x), f.y);
+        }
+        float fbm(vec2 p) {
+          float v = 0.0, a = .5;
+          for (int i=0; i<5; i++) { v += a*noise(p); p = p*2.03 + 17.7; a *= .5; }
+          return v;
+        }
+        void main() {
+          vec2 uv = vUv;
+          float aspect = uResolution.x / max(uResolution.y, 1.0);
+          vec2 p = (uv-.5)*vec2(aspect,1.0);
+          float t = uTime;
+
+          vec2 wave = vec2(
+            sin(p.y*18.0+t*.65)+sin((p.x+p.y)*11.0-t*.48),
+            cos(p.x*16.0-t*.55)+sin((p.x-p.y)*13.0+t*.42)
+          ) * .0055;
+          wave += (uPointer-.5) * .012;
+          float rings = 0.0;
+          for (int i=0; i<8; i++) {
+            float age = t-uRipples[i].z;
+            vec2 rp = uv-uRipples[i].xy;
+            rp.x *= aspect;
+            float d = length(rp);
+            float ring = sin(d*105.0-age*5.8) * exp(-d*7.0) * exp(-age*.72);
+            ring *= step(0.0,age) * step(age,6.0);
+            rings += ring;
+            wave += normalize(rp+vec2(.0001)) * ring * .009;
+          }
+
+          vec2 q = uv + wave;
+          vec3 skyTop = vec3(.12,.52,.78);
+          vec3 skyLow = vec3(.59,.87,.94);
+          vec3 col = mix(skyLow, skyTop, smoothstep(.0,1.0,q.y));
+
+          vec2 cloudUv = vec2(q.x*aspect, q.y)*2.1 + vec2(t*.008,0.0);
+          float cloud = fbm(cloudUv*1.45 + fbm(cloudUv*.7));
+          cloud = smoothstep(.52,.73,cloud) * smoothstep(.03,.36,q.y);
+          col = mix(col, vec3(.96,.99,1.0), cloud*.88);
+
+          vec2 sunPos = vec2(.76,.73);
+          vec2 sunDelta = q-sunPos; sunDelta.x *= aspect;
+          float sun = exp(-length(sunDelta)*9.0);
+          col += vec3(.78,.94,1.0)*sun*.55;
+
+          float surface = sin(q.x*32.0+t*.6)*sin(q.y*25.0-t*.45);
+          surface += sin((q.x+q.y)*48.0-t*.8)*.35 + rings*1.5;
+          float glint = pow(max(0.0, surface*.5+.5), 10.0);
+          col += vec3(.72,.96,1.0)*glint*.18;
+          col = mix(col, vec3(.04,.38,.63), .13 + (1.0-q.y)*.13);
+          float vignette = smoothstep(.82,.18,length(p*vec2(.72,1.0)));
+          col *= .78 + .22*vignette;
+          col += vec3(.1,.5,.66)*rings*.08;
+          gl_FragColor = vec4(col,1.0);
+        }
+      `,
+    });
+    scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), material));
+
+    const hero = canvas.closest(".hero");
+    let rippleIndex = 0;
+    let dragging = false;
+    let lastRipple = 0;
+    const positionFor = (event) => {
+      const rect = hero.getBoundingClientRect();
+      return new THREE.Vector2((event.clientX-rect.left)/rect.width, 1-(event.clientY-rect.top)/rect.height);
+    };
+    const addRipple = (event) => {
+      const point = positionFor(event);
+      rippleData[rippleIndex].set(point.x, point.y, clock.getElapsedTime());
+      rippleIndex = (rippleIndex+1)%rippleData.length;
+      lastRipple = performance.now();
+    };
+    hero.addEventListener("pointerdown", (event) => { dragging = true; addRipple(event); });
+    hero.addEventListener("pointerup", () => { dragging = false; });
+    hero.addEventListener("pointercancel", () => { dragging = false; });
+    hero.addEventListener("pointerleave", () => { dragging = false; });
+    hero.addEventListener("pointermove", (event) => {
+      const point = positionFor(event);
+      uniforms.uPointer.value.lerp(point, .18);
+      hero.style.setProperty("--water-x", ((point.x-.5)*2).toFixed(3));
+      hero.style.setProperty("--water-y", ((point.y-.5)*2).toFixed(3));
+      if (dragging && performance.now()-lastRipple > 85) addRipple(event);
+    });
+
+    const resize = () => {
+      const width = Math.max(canvas.clientWidth,1), height = Math.max(canvas.clientHeight,1);
+      renderer.setSize(width,height,false);
+      uniforms.uResolution.value.set(width*renderer.getPixelRatio(),height*renderer.getPixelRatio());
+    };
+    const observer = new ResizeObserver(resize);
+    observer.observe(canvas);
+    resize();
+    const animate = () => {
+      uniforms.uTime.value = reducedMotion ? 0 : clock.getElapsedTime();
+      renderer.render(scene,camera);
+      requestAnimationFrame(animate);
+    };
+    animate();
+  } catch (error) {
+    console.warn("Hero water scene unavailable", error);
+    canvas.hidden = true;
+  }
+}
+
 function makeEar(material) {
   const shape = new THREE.Shape();
   shape.moveTo(-0.62, -0.42);

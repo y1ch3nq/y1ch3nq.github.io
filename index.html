@@ -39,8 +39,10 @@
     </header>
 
     <main id="main">
-      <section class="hero section-shell" id="introduction" aria-labelledby="hero-title">
-        <div class="hero-copy reveal">
+      <section class="hero" id="introduction" aria-labelledby="hero-title">
+        <canvas id="hero-water-canvas" aria-label="Interactive underwater view of blue sky and clouds"></canvas>
+        <div class="hero-water-vignette" aria-hidden="true"></div>
+        <div class="hero-copy section-shell reveal">
           <div class="eyebrow"><span></span><span data-i18n="heroEyebrow">Communication · Product · Media</span></div>
           <h1 id="hero-title"><span data-i18n="heroHello">Hi, I’m</span><br /><em>Zoey Yichen<br />Qian.</em></h1>
           <p class="hero-role" data-i18n="heroRole">Communication Student &amp; Product-Oriented Creator</p>
@@ -55,24 +57,7 @@
           </div>
         </div>
 
-        <div class="water-feature reveal">
-          <div class="water-heading">
-            <div>
-              <span class="micro-label">INTERACTIVE STUDY · 001</span>
-              <h2 data-i18n="waterTitle">Touch the surface.</h2>
-            </div>
-            <p data-i18n="waterCopy">Draw ripples, move the sphere, and watch light travel through water. Best experienced in a WebGPU browser.</p>
-          </div>
-          <div class="water-frame">
-            <iframe src="/water-lab/" title="Interactive WebGPU water simulation" loading="eager" allow="fullscreen" tabindex="0"></iframe>
-            <div class="water-corner top-left">WEBGPU</div>
-            <div class="water-corner bottom-right" data-i18n="waterHint">CLICK · DRAG · RIPPLE</div>
-          </div>
-          <div class="water-credit">
-            <span data-i18n="waterCredit">Water study by Evan Wallace, ported by jeantimex · MIT License</span>
-            <a href="https://github.com/jeantimex/webgpu-water" target="_blank" rel="noreferrer">View source ↗</a>
-          </div>
-        </div>
+        <div class="hero-water-hint"><span class="pulse-dot"></span><span data-i18n="waterHint">CLICK · DRAG · RIPPLE</span></div>
       </section>
 
       <section class="content-section section-shell" id="education" aria-labelledby="education-title">

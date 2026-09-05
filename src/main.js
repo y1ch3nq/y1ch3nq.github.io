@@ -1,5 +1,5 @@
 import "./styles.css";
-import { initWalkmanScene, initPianoScene } from "./scenes.js";
+import { initHeroWaterScene, initWalkmanScene, initPianoScene } from "./scenes.js";
 
 const translations = {
   zh: {
@@ -14,10 +14,7 @@ const translations = {
     heroRole: "传播学学生 & 产品导向的创作者",
     heroStatement: "我将受众与市场洞察转化为产品概念、工作流工具和跨平台内容策略，在产品、媒体与技术的交叉处，打造实用且以用户为中心的数字体验。",
     exploreWork: "查看精选项目",
-    waterTitle: "触碰水面。",
-    waterCopy: "划出涟漪、移动球体，观察光线穿过水面。推荐使用支持 WebGPU 的浏览器体验。",
     waterHint: "点击 · 拖动 · 涟漪",
-    waterCredit: "水体实验由 Evan Wallace 创作，jeantimex 移植 · MIT License",
     sectionEducation: "教育",
     educationKicker: "知识基础",
     educationTitle: "理解思想如何影响人。",
@@ -276,6 +273,7 @@ document.querySelectorAll("main > section[id]").forEach((section) => sectionObse
 
 document.querySelector("#year").textContent = new Date().getFullYear();
 setLanguage("en");
+initHeroWaterScene(document.querySelector("#hero-water-canvas"));
 initWalkmanScene(document.querySelector("#walkman-canvas"), {
   onPrevious: () => changeTrack(-1),
   onNext: () => changeTrack(1),
