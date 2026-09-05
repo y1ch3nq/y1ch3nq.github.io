@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="LRC Visualizer case study — a browser-based lyric-video workflow designed by Zoey Yichen Qian." />
+    <meta name="theme-color" content="#f6fbff" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet" />
+    <title>LRC Visualizer — Zoey Qian</title>
+    <script type="module" src="/src/project.js"></script>
+  </head>
+  <body class="project-page">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <nav class="nav-shell project-nav" aria-label="Project navigation">
+        <a class="wordmark" href="/" aria-label="Zoey Qian home"><span class="wordmark-orb">ZQ</span><span>ZO<em>EY</em></span></a>
+        <a class="back-link" href="/#projects"><span>←</span><span data-i18n="backPortfolio">Back to portfolio</span></a>
+        <button class="language-toggle" type="button" aria-label="切换到中文"><span class="language-current">EN</span><i></i><span class="language-next">中文</span></button>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="case-hero detail-shell">
+        <div class="case-intro reveal">
+          <div class="eyebrow"><span></span><span>CASE STUDY · 01</span></div>
+          <h1>LRC<br /><em>Visualizer.</em></h1>
+          <p class="case-lede" data-i18n="caseLede">A browser-based lyric-video production tool that combines audio, timed lyrics, typography, color, layout, and export controls in one customizable workflow.</p>
+          <div class="case-meta">
+            <div><span data-i18n="role">Role</span><strong data-i18n="roleValue">Product definition, workflow design, interface decisions, testing &amp; iteration</strong></div>
+            <div><span data-i18n="timeline">Timeline</span><strong>2026</strong></div>
+            <div><span data-i18n="tools">Tools</span><strong>Browser APIs · AI-assisted development</strong></div>
+            <div><span data-i18n="status">Status</span><strong data-i18n="statusValue">Live · continuing iteration</strong></div>
+          </div>
+          <div class="hero-actions">
+            <a class="button button-primary" href="https://y1ch3nq.github.io/lrc-visualizer/" target="_blank" rel="noreferrer"><span data-i18n="openProduct">Open live product</span><span>↗</span></a>
+            <a class="button button-ghost" href="https://github.com/y1ch3nq/lrc-visualizer" target="_blank" rel="noreferrer">View GitHub <span>↗</span></a>
+          </div>
+        </div>
+        <div class="case-preview reveal delay-1">
+          <div class="browser-chrome"><span><i></i><i></i><i></i></span><b>y1ch3nq.github.io/lrc-visualizer</b><a href="https://y1ch3nq.github.io/lrc-visualizer/" target="_blank" rel="noreferrer">↗</a></div>
+          <img src="/images/lrc-interface.png" alt="LRC Visualizer interface with project inputs, lyric preview, and visual controls" />
+        </div>
+      </section>
+
+      <section class="case-section detail-shell reveal" id="context">
+        <div class="case-number">01</div>
+        <div class="case-label"><span data-i18n="context">Context</span><i></i></div>
+        <div class="case-copy">
+          <h2 data-i18n="contextTitle">Built from inside the workflow.</h2>
+          <p data-i18n="contextCopy">The project grew from hands-on lyric-video production at AllSaints Music Group. Repeating the same timing, formatting, preview, and export steps made the real opportunity clear: the workflow needed a purpose-built product, not another editing workaround.</p>
+        </div>
+      </section>
+
+      <section class="case-section detail-shell reveal" id="problem">
+        <div class="case-number">02</div>
+        <div class="case-label"><span data-i18n="problem">Problem</span><i></i></div>
+        <div class="case-copy">
+          <h2 data-i18n="problemTitle">A creative task buried in repetitive production.</h2>
+          <div class="problem-grid">
+            <article><span>01</span><h3 data-i18n="problemOneTitle">Manual timing</h3><p data-i18n="problemOneCopy">Lyric timing and line changes required repetitive, frame-by-frame attention.</p></article>
+            <article><span>02</span><h3 data-i18n="problemTwoTitle">Fragmented controls</h3><p data-i18n="problemTwoCopy">Audio, lyrics, typography, color, layout, and format decisions lived across separate steps.</p></article>
+            <article><span>03</span><h3 data-i18n="problemThreeTitle">Slow revisions</h3><p data-i18n="problemThreeCopy">Small visual changes could trigger another long editing and export cycle.</p></article>
+            <article><span>04</span><h3 data-i18n="problemFourTitle">Inconsistent output</h3><p data-i18n="problemFourCopy">Repeated manual setup made it harder to reproduce formats across songs and platforms.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section detail-shell reveal" id="approach">
+        <div class="case-number">03</div>
+        <div class="case-label"><span data-i18n="approach">Product approach</span><i></i></div>
+        <div class="case-copy">
+          <h2 data-i18n="approachTitle">Translate every editing decision into a reusable control.</h2>
+          <p data-i18n="approachCopy">I mapped the original production sequence, separated recurring decisions from song-specific inputs, and turned them into a browser workflow with reusable templates and a single preview-to-export path.</p>
+          <div class="workflow-line" aria-label="Product workflow">
+            <div><span>01</span><strong data-i18n="flowImport">Import audio &amp; lyrics</strong></div><i>→</i>
+            <div><span>02</span><strong data-i18n="flowTime">Edit or time lyrics</strong></div><i>→</i>
+            <div><span>03</span><strong data-i18n="flowStyle">Style &amp; format</strong></div><i>→</i>
+            <div><span>04</span><strong data-i18n="flowPreview">Preview</strong></div><i>→</i>
+            <div><span>05</span><strong data-i18n="flowExport">Export</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section detail-shell reveal" id="features">
+        <div class="case-number">04</div>
+        <div class="case-label"><span data-i18n="features">Features &amp; decisions</span><i></i></div>
+        <div class="case-copy">
+          <h2 data-i18n="featuresTitle">Flexible where creators need choice. Structured where they need speed.</h2>
+          <div class="feature-list">
+            <article><span>IMPORT</span><h3 data-i18n="featureImport">LRC and text import</h3><p data-i18n="featureImportCopy">Bring in timed LRC files, plain lyrics, or pasted text and continue into the built-in timing workflow.</p></article>
+            <article><span>TIME</span><h3 data-i18n="featureTime">Line- or word-level timing</h3><p data-i18n="featureTimeCopy">Choose the timing precision that fits a scrolling, wave, or word-by-word format.</p></article>
+            <article><span>STYLE</span><h3 data-i18n="featureStyle">Typography and color controls</h3><p data-i18n="featureStyleCopy">Adjust fonts, hierarchy, colors, alignment, background, and lyric emphasis in one place.</p></article>
+            <article><span>FORMAT</span><h3 data-i18n="featureFormat">Templates and aspect ratios</h3><p data-i18n="featureFormatCopy">Reuse visual systems across scrolling, wave, and monochrome word-timed treatments.</p></article>
+            <article><span>LOCAL</span><h3 data-i18n="featureLocal">Browser-local processing</h3><p data-i18n="featureLocalCopy">Keep media processing local where supported, reducing handoffs and protecting source assets.</p></article>
+            <article><span>EXPORT</span><h3 data-i18n="featureExport">Background-ready export</h3><p data-i18n="featureExportCopy">Export can run separately after setup, freeing the creator from active frame-by-frame editing.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section output-section detail-shell reveal" id="outputs">
+        <div class="case-number">05</div>
+        <div class="case-label"><span data-i18n="outputs">Selected outputs</span><i></i></div>
+        <div class="case-copy">
+          <h2 data-i18n="outputsTitle">One system, multiple visual languages.</h2>
+          <p data-i18n="outputsCopy">At least five finished videos were used to validate the production workflow. Approved public video files were not included with this portfolio, so the cards below document validated output formats without presenting unsupported samples.</p>
+          <div class="output-grid">
+            <article><div class="lyric-mock scroll-mock"><span>WE FOLLOW THE LIGHT</span><span>ACROSS THE WATER</span><span>UNTIL IT FEELS LIKE HOME</span></div><h3 data-i18n="outputScroll">Scrolling lyric video</h3><p>LRC VISUALIZER · VALIDATED FORMAT</p></article>
+            <article><div class="lyric-mock wave-mock"><i></i><span>hold the moment</span><i></i></div><h3 data-i18n="outputWave">Single-line wave lyric</h3><p>LRC VISUALIZER · VALIDATED FORMAT</p></article>
+            <article><div class="lyric-mock word-mock"><span>EVERY</span><span>WORD</span><span>ARRIVES</span></div><h3 data-i18n="outputWord">Black &amp; white word timing</h3><p>LRC VISUALIZER · VALIDATED FORMAT</p></article>
+            <article><div class="lyric-mock vanso-mock"><span>VANSO</span><i></i><strong>01:13</strong></div><h3 data-i18n="outputVanso">Vanso lyric treatment</h3><p>LRC VISUALIZER · VALIDATED FORMAT</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="impact-block detail-shell reveal" id="impact">
+        <p class="micro-label" data-i18n="impact">IMPACT</p>
+        <h2 data-i18n="impactTitle">Less manual editing.<br />More room for creative decisions.</h2>
+        <div class="impact-grid">
+          <div><strong>~30 <small>MIN</small></strong><span data-i18n="beforeWorkflow">Previous manual editing workflow</span></div>
+          <div class="impact-arrow">→</div>
+          <div><strong>1–3 <small>MIN</small></strong><span data-i18n="afterWorkflow">Active setup and editing</span></div>
+          <div><strong>1–5 <small>MIN</small></strong><span data-i18n="exportTime">Background export, depending on output</span></div>
+          <div><strong>5+ <small>VIDEOS</small></strong><span data-i18n="validation">Finished outputs used to validate the workflow</span></div>
+        </div>
+      </section>
+
+      <section class="case-section detail-shell reveal" id="role-process">
+        <div class="case-number">06</div>
+        <div class="case-label"><span data-i18n="process">Role &amp; process</span><i></i></div>
+        <div class="case-copy two-column-copy">
+          <div><h2 data-i18n="processTitle">Product ownership, with AI-assisted development.</h2><p data-i18n="processCopy">I owned the problem definition, workflow mapping, feature priorities, interface decisions, testing, and iteration. AI-assisted development helped translate those decisions into a working browser product; it did not replace product judgment or production validation.</p></div>
+          <blockquote data-i18n="processQuote">“The goal was not to automate creativity. It was to remove the repeated steps surrounding it.”</blockquote>
+        </div>
+      </section>
+
+      <section class="case-section detail-shell reveal" id="reflection">
+        <div class="case-number">07</div>
+        <div class="case-label"><span data-i18n="reflection">Reflection &amp; next steps</span><i></i></div>
+        <div class="case-copy">
+          <h2 data-i18n="reflectionTitle">A working tool is the start of product learning.</h2>
+          <div class="reflection-grid">
+            <article><span data-i18n="worked">WHAT WORKED</span><p data-i18n="workedCopy">Building from a real production workflow kept decisions practical. Reusable controls shortened active editing while preserving visual flexibility.</p></article>
+            <article><span data-i18n="limits">CURRENT LIMITATIONS</span><p data-i18n="limitsCopy">Browser encoding support and export performance vary by device, and advanced timing still benefits from careful review.</p></article>
+            <article><span data-i18n="next">NEXT TO TEST</span><p data-i18n="nextCopy">More creator testing, clearer first-use guidance, stronger preset management, and performance checks across browsers and lower-powered devices.</p></article>
+          </div>
+          <div class="case-end-actions"><a class="button button-primary" href="https://y1ch3nq.github.io/lrc-visualizer/" target="_blank" rel="noreferrer"><span data-i18n="tryProduct">Try LRC Visualizer</span><span>↗</span></a><a class="button button-ghost" href="/#projects"><span data-i18n="moreProjects">More projects</span><span>←</span></a></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer detail-shell"><span>© <span id="year"></span> ZOEY YICHEN QIAN</span><span data-i18n="footer">PRODUCT · MEDIA · CREATIVE TECHNOLOGY</span><a href="#main"><span data-i18n="backTop">BACK TO TOP</span> ↑</a></footer>
+  </body>
+</html>

@@ -3,294 +3,297 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Zoey Yichen Qian's portfolio: cross-cultural content operations, creative technology, music, and media research."
-    />
-    <meta name="theme-color" content="#f6efff" />
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' shape-rendering='crispEdges'%3E%3Cpath fill='%2349406f' d='M2 2h28v28H2z'/%3E%3Cpath fill='%23ff9bc9' d='M5 5h22v22H5z'/%3E%3Cpath fill='%23fff' d='M9 8h14v4l-8 8h8v4H9v-4l8-8H9z'/%3E%3C/svg%3E" />
-    <title>Zoey Qian — Content & Creative Tech</title>
+    <meta name="description" content="Zoey Yichen Qian — communication student and product-oriented creator working across product, media, and creative technology." />
+    <meta name="theme-color" content="#f6fbff" />
+    <meta property="og:title" content="Zoey Yichen Qian — Portfolio" />
+    <meta property="og:description" content="Product thinking, media strategy, and creative technology." />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700;800&family=Pixelify+Sans:wght@500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet" />
+    <title>Zoey Yichen Qian — Portfolio</title>
+    <script type="module" src="/src/main.js"></script>
   </head>
   <body>
-    <a class="skip-link" href="#main">跳到主要内容</a>
+    <a class="skip-link" href="#main">Skip to content</a>
 
-    <svg class="icon-sprite" aria-hidden="true">
-      <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 11 9-8 9 8v10h-6v-6H9v6H3Z" /></symbol>
-      <symbol id="i-work" viewBox="0 0 24 24"><path d="M9 6V4h6v2h6v14H3V6Zm2 0h2V5h-2Zm-6 5v7h14v-7l-6 3h-2Zm0-3v1l7 3 7-3V8Z" /></symbol>
-      <symbol id="i-folder" viewBox="0 0 24 24"><path d="M2 5h8l2 2h10v13H2Zm2 4v9h16V9Z" /></symbol>
-      <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 2 2.1 6.9L21 11l-6.9 2.1L12 20l-2.1-6.9L3 11l6.9-2.1ZM5 2l.8 2.2L8 5l-2.2.8L5 8l-.8-2.2L2 5l2.2-.8Zm14 14 .8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8Z" /></symbol>
-      <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 21 3.2 12.2A5.4 5.4 0 0 1 10.8 4l1.2 1.2L13.2 4a5.4 5.4 0 0 1 7.6 7.6Z" /></symbol>
-      <symbol id="i-mail" viewBox="0 0 24 24"><path d="M2 5h20v14H2Zm2 2v1l8 5 8-5V7Zm16 10v-7l-8 5-8-5v7Z" /></symbol>
-      <symbol id="i-github" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.2 19.5v-2.2c-2.6.6-3.1-1.1-3.1-1.1-.4-1.1-1-1.4-1-1.4-.9-.6 0-.6 0-.6 1 0 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.8.8.1-.7.4-1.1.7-1.3-2.1-.2-4.3-1-4.3-4.7 0-1 .4-1.9 1-2.6-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.8 1A9.5 9.5 0 0 1 12 7.5a9.5 9.5 0 0 1 2.7.4c2-1.3 2.8-1 2.8-1 .5 1.3.2 2.3.1 2.6.6.7 1 1.6 1 2.6 0 3.7-2.2 4.5-4.3 4.7.3.3.7.9.7 1.8v2.9A10 10 0 0 0 12 2Z" /></symbol>
-      <symbol id="i-download" viewBox="0 0 24 24"><path d="M11 3h2v10l3-3 1.5 1.5L12 17l-5.5-5.5L8 10l3 3ZM4 18h16v3H4Z" /></symbol>
-      <symbol id="i-external" viewBox="0 0 24 24"><path d="M13 3h8v8h-2V6.4l-9.3 9.3-1.4-1.4L17.6 5H13ZM4 5h7v2H6v11h11v-5h2v7H4Z" /></symbol>
-      <symbol id="i-copy" viewBox="0 0 24 24"><path d="M8 7h12v14H8Zm2 2v10h8V9ZM4 3h12v2H6v12H4Z" /></symbol>
-      <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4v16l13-8Z" /></symbol>
-    </svg>
-
-    <div class="topbar" aria-label="系统栏">
-      <a class="brand" href="#home"><span class="brand-pixel">Z</span> ZOEY.OS</a>
-      <div class="topbar-right">
-        <span class="online-dot" aria-hidden="true"></span>
-        <span data-i18n="status">可联系</span>
-        <span class="topbar-divider">|</span>
-        <time id="clock" aria-label="洛杉矶时间">--:--</time>
-        <button class="text-button" id="language-toggle" type="button" aria-label="Switch language">ZH</button>
-      </div>
-    </div>
-
-    <nav class="dock" aria-label="页面导航">
-      <a class="dock-item active" href="#home" data-section="home" aria-label="主页">
-        <svg><use href="#i-home" /></svg><span data-i18n="navHome">主页</span>
-      </a>
-      <a class="dock-item" href="#experience" data-section="experience" aria-label="经历">
-        <svg><use href="#i-work" /></svg><span data-i18n="navExperience">经历</span>
-      </a>
-      <a class="dock-item" href="#projects" data-section="projects" aria-label="项目">
-        <svg><use href="#i-folder" /></svg><span data-i18n="navProjects">项目</span>
-      </a>
-      <a class="dock-item" href="#skills" data-section="skills" aria-label="技能">
-        <svg><use href="#i-spark" /></svg><span data-i18n="navSkills">技能</span>
-      </a>
-      <a class="dock-item" href="#play" data-section="play" aria-label="兴趣">
-        <svg><use href="#i-heart" /></svg><span data-i18n="navPlay">兴趣</span>
-      </a>
-    </nav>
+    <header class="site-header">
+      <nav class="nav-shell" aria-label="Primary navigation">
+        <a class="wordmark" href="#introduction" aria-label="Zoey Qian home">
+          <span class="wordmark-orb">ZQ</span>
+          <span>ZO<em>EY</em></span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links"><span></span><span></span></button>
+        <div class="nav-links" id="nav-links">
+          <a href="#education" data-i18n="navEducation">Education</a>
+          <a href="#experience" data-i18n="navExperience">Experience</a>
+          <a href="#projects" data-i18n="navProjects">Projects</a>
+          <a href="#skills" data-i18n="navSkills">Skills</a>
+          <button class="nav-link-button resume-trigger" type="button" data-i18n="navResume">Resume</button>
+          <a href="#contact" data-i18n="navContact">Contact</a>
+        </div>
+        <button class="language-toggle" type="button" aria-label="切换到中文" data-aria-en="切换到中文" data-aria-zh="Switch to English">
+          <span class="language-current">EN</span><i></i><span class="language-next">中文</span>
+        </button>
+      </nav>
+    </header>
 
     <main id="main">
-      <section id="home" class="screen hero-screen" aria-labelledby="hero-title">
-        <div class="ambient-pixels" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-        <div class="hero-layout">
-          <article class="window hero-window reveal">
-            <div class="titlebar">
-              <div class="titlebar-label"><span class="mini-icon">✦</span> profile.exe</div>
-              <div class="window-controls" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div>
-            </div>
-            <div class="hero-content">
-              <div class="identity-block">
-                <div class="pixel-portrait" aria-label="ZQ 像素头像">
-                  <div class="portrait-glow"></div>
-                  <span>ZQ</span>
-                  <b>★</b>
-                </div>
-                <div class="availability"><span></span><span data-i18n="openTo">OPEN TO COLLABORATE</span></div>
-              </div>
-              <div class="hero-copy">
-                <div class="eyebrow" data-i18n="eyebrow">CONTENT · CULTURE · CREATIVE TECH</div>
-                <h1 id="hero-title">Zoey<br /><span>Yichen Qian</span></h1>
-                <p class="name-cn">USC · B.A. Communication</p>
-                <p class="hero-lede" data-i18n="heroLede">
-                  我把跨文化洞察、内容运营与轻量 AI 工具连成一条工作流，让好故事更快、更准确地抵达全球受众。
-                </p>
-                <div class="hero-actions">
-                  <a class="pixel-button primary" href="#projects"><svg><use href="#i-folder" /></svg><span data-i18n="viewWork">查看项目</span></a>
-                  <a class="pixel-button" href="https://github.com/y1ch3nq" target="_blank" rel="noreferrer"><svg><use href="#i-github" /></svg>GitHub</a>
-                  <button class="pixel-button icon-only" id="copy-email" type="button" aria-label="复制邮箱"><svg><use href="#i-copy" /></svg></button>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <aside class="window status-window reveal delay-1" aria-label="成果概览">
-            <div class="titlebar compact">
-              <div class="titlebar-label"><span class="mini-icon">◉</span> work_status</div>
-              <div class="window-controls" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div>
-            </div>
-            <div class="status-body">
-              <div class="score-line"><span data-i18n="impact">IMPACT SCORE</span><strong>30K+</strong><small data-i18n="views">内容播放</small></div>
-              <div class="metric-list">
-                <div class="metric-row"><span>01</span><div><b data-i18n="metricPublishing">全球发布支持</b><small>291+ items</small></div><i style="--progress: 92%"></i></div>
-                <div class="metric-row"><span>02</span><div><b data-i18n="metricAssets">节目素材交付</b><small>200 assets</small></div><i style="--progress: 76%"></i></div>
-                <div class="metric-row"><span>03</span><div><b data-i18n="metricEfficiency">提示词效率</b><small>−67%—75%</small></div><i style="--progress: 84%"></i></div>
-              </div>
-              <div class="now-card"><span class="blink">▌</span><div><small data-i18n="nowLabel">NOW BUILDING</small><b>LRC Visualizer</b></div></div>
-            </div>
-          </aside>
+      <section class="hero section-shell" id="introduction" aria-labelledby="hero-title">
+        <div class="hero-copy reveal">
+          <div class="eyebrow"><span></span><span data-i18n="heroEyebrow">Communication · Product · Media</span></div>
+          <h1 id="hero-title"><span data-i18n="heroHello">Hi, I’m</span><br /><em>Zoey Yichen<br />Qian.</em></h1>
+          <p class="hero-role" data-i18n="heroRole">Communication Student &amp; Product-Oriented Creator</p>
+          <p class="hero-statement" data-i18n="heroStatement">I translate audience and market insights into product concepts, workflow tools, and cross-platform content strategies—building practical, user-centered experiences where product, media, and technology meet.</p>
+          <div class="hero-meta">
+            <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.1 7-12A7 7 0 1 0 5 9c0 5.9 7 12 7 12Zm0-9.3A2.7 2.7 0 1 1 12 6a2.7 2.7 0 0 1 0 5.4Z"/></svg>Los Angeles, California</span>
+            <a href="mailto:zoeyqian@usc.edu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18v14H3V5Zm2 2v.5l7 4.7 7-4.7V7H5Zm14 10V9.9l-7 4.6-7-4.6V17h14Z"/></svg>zoeyqian@usc.edu</a>
+          </div>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#projects"><span data-i18n="exploreWork">Explore selected work</span><span aria-hidden="true">↘</span></a>
+            <a class="button button-ghost" href="https://github.com/y1ch3nq" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+          </div>
         </div>
-        <a class="scroll-cue" href="#experience"><span data-i18n="scroll">向下浏览</span><i>↓</i></a>
+
+        <div class="cat-stage reveal delay-1">
+          <canvas id="cat-canvas" aria-label="Interactive rotating blue 3D cat head"></canvas>
+          <div class="cat-fallback" hidden aria-hidden="true"><span>◠ᴥ◠</span></div>
+          <div class="stage-ring ring-one"></div><div class="stage-ring ring-two"></div>
+          <span class="orbit-star star-one">✦</span><span class="orbit-star star-two">✧</span>
+          <div class="scene-caption"><span class="pulse-dot"></span><span data-i18n="catInstruction">Drag the cat to rotate</span></div>
+          <div class="cat-name">mizu_01</div>
+        </div>
+
+        <div class="water-feature reveal">
+          <div class="water-heading">
+            <div>
+              <span class="micro-label">INTERACTIVE STUDY · 001</span>
+              <h2 data-i18n="waterTitle">Touch the surface.</h2>
+            </div>
+            <p data-i18n="waterCopy">Draw ripples, move the sphere, and watch light travel through water. Best experienced in a WebGPU browser.</p>
+          </div>
+          <div class="water-frame">
+            <iframe src="/water-lab/" title="Interactive WebGPU water simulation" loading="eager" allow="fullscreen" tabindex="0"></iframe>
+            <div class="water-corner top-left">WEBGPU</div>
+            <div class="water-corner bottom-right" data-i18n="waterHint">CLICK · DRAG · RIPPLE</div>
+          </div>
+          <div class="water-credit">
+            <span data-i18n="waterCredit">Water study by Evan Wallace, ported by jeantimex · MIT License</span>
+            <a href="https://github.com/jeantimex/webgpu-water" target="_blank" rel="noreferrer">View source ↗</a>
+          </div>
+        </div>
       </section>
 
-      <section id="experience" class="content-section" aria-labelledby="experience-title">
-        <header class="section-heading reveal">
-          <span>01 / CAREER_LOG</span>
-          <h2 id="experience-title" data-i18n="experienceTitle">实习与成长轨迹</h2>
-          <p data-i18n="experienceIntro">从内容生产到全球渠道运营，再到为重复工作写工具：我关心创意，也关心创意如何被稳定交付。</p>
-        </header>
-
-        <article class="window experience-window reveal">
-          <div class="titlebar">
-            <div class="titlebar-label"><span class="mini-icon">▣</span> experience.log</div>
-            <div class="window-controls" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div>
-          </div>
-          <div class="timeline">
-            <div class="timeline-item featured">
-              <div class="timeline-date">2026.06 — NOW</div>
-              <div class="timeline-marker"><i></i></div>
-              <div class="timeline-card">
-                <div class="role-topline"><div><h3>Allsaints Music Group</h3><p data-i18n="allsaintsRole">内容运营实习生 · Content Operations Intern</p></div><span class="live-chip" data-i18n="current">进行中</span></div>
-                <p class="role-summary" data-i18n="allsaintsSummary">负责 Viza、The Aidols 与 Vanso 的 AI 辅助短视频制作、多语言发布支持和海外平台搭建；同时把高频手工流程做成可复用的网页工具。</p>
-                <div class="role-stats">
-                  <div><strong>16</strong><span data-i18n="statVideos">条视频内容</span></div>
-                  <div><strong>200</strong><span data-i18n="statAssets">条节目素材</span></div>
-                  <div><strong>291+</strong><span data-i18n="statOps">条发布配置</span></div>
-                  <div><strong>4</strong><span data-i18n="statAccounts">个海外账号</span></div>
-                </div>
-                <button class="details-toggle" type="button" aria-expanded="false" data-i18n="showDetails">＋ 展开职责细节</button>
-                <ul class="detail-list" hidden>
-                  <li data-i18n="detail1">为 TikTok、Instagram、YouTube 策划、生成、剪辑并发布内容，累计获得 30K+ 播放。</li>
-                  <li data-i18n="detail2">完成小米国际、Vanso、OPPO 的 Push、冷启动与定时轮询配置，支持多语言本地化。</li>
-                  <li data-i18n="detail3">负责 Vanso 英文稿件校对与 The Aidols 官方邮箱、海外平台账号的前期搭建。</li>
+      <section class="content-section section-shell" id="education" aria-labelledby="education-title">
+        <div class="section-index reveal"><span>01</span><span data-i18n="sectionEducation">Education</span></div>
+        <div class="section-content">
+          <header class="section-heading reveal">
+            <p class="micro-label" data-i18n="educationKicker">FOUNDATION</p>
+            <h2 id="education-title" data-i18n="educationTitle">Learning how ideas move people.</h2>
+          </header>
+          <article class="education-card reveal">
+            <div class="usc-mark" aria-hidden="true"><span>USC</span><i>✦</i></div>
+            <div class="education-main">
+              <div class="education-topline"><span>2025—2029</span><span>LOS ANGELES, CA</span></div>
+              <h3>University of Southern California</h3>
+              <p data-i18n="degree">Bachelor of Arts in Communication</p>
+              <div class="coursework">
+                <span data-i18n="courseLabel">Relevant coursework</span>
+                <ul>
+                  <li data-i18n="courseOne">Communication and Technology</li>
+                  <li data-i18n="courseTwo">Seminar in Humanistic Inquiry</li>
                 </ul>
               </div>
             </div>
-
-            <div class="timeline-item">
-              <div class="timeline-date">2022.09 — 2024.10</div>
-              <div class="timeline-marker"><i></i></div>
-              <div class="timeline-card">
-                <div class="role-topline"><div><h3 data-i18n="magazineName">校园杂志社</h3><p data-i18n="magazineRole">主编 / 社团负责人</p></div></div>
-                <p class="role-summary" data-i18n="magazineSummary">统筹月刊内容与社交媒体运营，带领 18 人编辑团队；读者增长 30%，连续两年获得校级社团荣誉。</p>
-                <div class="tag-row"><span>EDITORIAL</span><span>COMMUNITY</span><span>TEAM OF 18</span></div>
-              </div>
-            </div>
-
-            <div class="timeline-item education-item">
-              <div class="timeline-date">2025 — 2029</div>
-              <div class="timeline-marker"><i></i></div>
-              <div class="timeline-card">
-                <div class="role-topline"><div><h3>University of Southern California</h3><p data-i18n="uscRole">传播学学士 · 预计 2029 年 5 月毕业</p></div><span class="school-chip">USC</span></div>
-                <p class="role-summary" data-i18n="uscCourse">课程关注传播科技、公众传播、人文研究与 Hip-Hop 文化。</p>
-              </div>
-            </div>
-          </div>
-        </article>
-      </section>
-
-      <section id="projects" class="content-section projects-section" aria-labelledby="projects-title">
-        <header class="section-heading reveal">
-          <span>02 / PROJECT_FILES</span>
-          <h2 id="projects-title" data-i18n="projectsTitle">项目档案</h2>
-          <p data-i18n="projectsIntro">工具、内容和研究并列展示。点击左侧文件，右侧会展开问题、方法与结果。</p>
-        </header>
-
-        <article class="window project-window reveal">
-          <div class="titlebar">
-            <div class="titlebar-label"><span class="mini-icon">▤</span> projects.folder</div>
-            <div class="window-controls" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div>
-          </div>
-          <div class="project-browser">
-            <div class="project-sidebar" role="tablist" aria-label="项目列表">
-              <div class="sidebar-label" data-i18n="selectedFiles">SELECTED FILES</div>
-              <button class="project-tab active" type="button" role="tab" aria-selected="true" data-project="lrc"><span class="file-icon pink">♪</span><span><b>LRC Visualizer</b><small>PRODUCT / CODE</small></span></button>
-              <button class="project-tab" type="button" role="tab" aria-selected="false" data-project="prompt"><span class="file-icon blue">✦</span><span><b>Prompt Factory</b><small>AI WORKFLOW</small></span></button>
-              <button class="project-tab" type="button" role="tab" aria-selected="false" data-project="hiphop"><span class="file-icon yellow">♫</span><span><b>Artist Development</b><small>STRATEGY</small></span></button>
-              <button class="project-tab" type="button" role="tab" aria-selected="false" data-project="research"><span class="file-icon purple">▥</span><span><b>Media Narrative</b><small>RESEARCH</small></span></button>
-            </div>
-            <div id="project-panel" class="project-panel" role="tabpanel" aria-live="polite"></div>
-          </div>
-        </article>
-      </section>
-
-      <section id="skills" class="content-section" aria-labelledby="skills-title">
-        <header class="section-heading reveal">
-          <span>03 / TOOLBOX</span>
-          <h2 id="skills-title" data-i18n="skillsTitle">技能与工作方式</h2>
-          <p data-i18n="skillsIntro">不是把软件堆成清单，而是说明我如何把它们组合成从想法到上线的流程。</p>
-        </header>
-
-        <div class="skills-grid">
-          <article class="window skill-window reveal">
-            <div class="titlebar compact"><div class="titlebar-label">content_stack.cfg</div><div class="window-controls" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div></div>
-            <div class="skill-body"><span class="skill-number">01</span><h3 data-i18n="skillContent">内容与增长</h3><p data-i18n="skillContentDesc">选题策划 · 短视频制作 · 社媒运营 · 多语言本地化 · 受众洞察</p><div class="skill-chips"><span>TikTok</span><span>Instagram</span><span>YouTube</span><span>SEO / GEO</span></div></div>
-          </article>
-          <article class="window skill-window reveal delay-1">
-            <div class="titlebar compact"><div class="titlebar-label">creative_tools.cfg</div><div class="window-controls" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div></div>
-            <div class="skill-body"><span class="skill-number">02</span><h3 data-i18n="skillMedia">制作与设计</h3><p data-i18n="skillMediaDesc">视频剪辑 · 视觉排版 · 歌词视频 · 内容原型 · 演示表达</p><div class="skill-chips"><span>Premiere</span><span>Final Cut Pro</span><span>Canva</span><span>MS Office</span></div></div>
-          </article>
-          <article class="window skill-window reveal delay-2">
-            <div class="titlebar compact"><div class="titlebar-label">ai_workflow.cfg</div><div class="window-controls" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div></div>
-            <div class="skill-body"><span class="skill-number">03</span><h3 data-i18n="skillAI">AI 与轻量开发</h3><p data-i18n="skillAIDesc">提示词设计 · AI 素材工作流 · 浏览器端工具 · 快速测试与迭代</p><div class="skill-chips"><span>ChatGPT</span><span>Gemini</span><span>NotebookLM</span><span>TypeScript</span></div></div>
-          </article>
-          <article class="window skill-window reveal delay-3">
-            <div class="titlebar compact"><div class="titlebar-label">languages.cfg</div><div class="window-controls" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div></div>
-            <div class="skill-body"><span class="skill-number">04</span><h3 data-i18n="skillLanguage">Language & cross-cultural work</h3><p data-i18n="skillLanguageDesc">Mandarin native · Fluent English (TOEFL 112) · Elementary Korean · Cross-cultural sensitivity</p><div class="skill-chips"><span>Mandarin</span><span>English</span><span>Korean</span><span>Copy QA</span></div></div>
+            <div class="graduation"><span data-i18n="expected">Expected</span><strong data-i18n="gradDate">May 2029</strong></div>
           </article>
         </div>
       </section>
 
-      <section id="play" class="content-section play-section" aria-labelledby="play-title">
-        <header class="section-heading reveal">
-          <span>04 / AFTER_HOURS</span>
-          <h2 id="play-title" data-i18n="playTitle">下班后的频道</h2>
-          <p data-i18n="playIntro">音乐、游戏、乐器与写作不是简历边角料，它们构成了我观察圈层、情绪与叙事的方式。</p>
-        </header>
-
-        <div class="play-desktop reveal">
-          <article class="window hobby-main">
-            <div class="titlebar"><div class="titlebar-label"><span class="mini-icon">♥</span> my_favorites.exe</div><div class="window-controls" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div></div>
-            <div class="hobby-content">
-              <div class="channel-display">
-                <div class="channel-art" id="channel-art"><span>♫</span><i></i><i></i><i></i></div>
-                <div><span class="micro-label" data-i18n="currentChannel">CURRENT CHANNEL</span><h3 id="channel-title">K‑Pop & Performance</h3><p id="channel-copy" data-i18n="musicCopy">从舞台视觉到粉丝社群，关注音乐如何成为跨文化身份表达。</p></div>
+      <section class="content-section section-shell experience-section" id="experience" aria-labelledby="experience-title">
+        <div class="section-index reveal"><span>02</span><span data-i18n="sectionExperience">Experience</span></div>
+        <div class="section-content">
+          <header class="section-heading reveal">
+            <p class="micro-label" data-i18n="experienceKicker">FROM CONTENT TO SYSTEMS</p>
+            <h2 id="experience-title" data-i18n="experienceTitle">Finding friction. Designing a better flow.</h2>
+          </header>
+          <article class="experience-card reveal">
+            <div class="experience-rail">
+              <span class="company-monogram">AM</span>
+              <div><span class="status-chip"><i></i><span data-i18n="currentRole">CURRENT ROLE</span></span><p>JUN 2026—<span data-i18n="present">PRESENT</span></p></div>
+            </div>
+            <div class="experience-body">
+              <div class="role-heading">
+                <div><h3>AllSaints Music Group</h3><p data-i18n="roleTitle">Content Operations Intern</p></div>
+                <span>LOS ANGELES / GLOBAL</span>
               </div>
-              <div class="channel-controls" role="group" aria-label="兴趣频道">
-                <button class="channel-button active" type="button" data-channel="music">01 <span data-i18n="music">音乐</span></button>
-                <button class="channel-button" type="button" data-channel="games">02 <span data-i18n="games">游戏</span></button>
-                <button class="channel-button" type="button" data-channel="instruments">03 <span data-i18n="instruments">乐器</span></button>
-                <button class="channel-button" type="button" data-channel="writing">04 <span data-i18n="writing">写作</span></button>
+              <p class="role-overview" data-i18n="roleOverview">Supporting AI-assisted content production, workflow development, and multilingual publishing for global music and entertainment products, including Viza, The Aidols, and Vanso.</p>
+              <div class="responsibility-grid">
+                <article>
+                  <span class="area-number">01</span><h4 data-i18n="contentProduction">Content Production</h4>
+                  <p data-i18n="contentProductionCopy">Planned, produced, and published short-form content across TikTok, Instagram, and YouTube—from ideation and asset generation to editing, copy, and release.</p>
+                  <div class="inline-proof"><strong>30K+</strong><span data-i18n="viewsProof">views across 16 videos and ~200 production assets</span></div>
+                </article>
+                <article>
+                  <span class="area-number">02</span><h4 data-i18n="workflowDevelopment">Workflow &amp; Product Development</h4>
+                  <p data-i18n="workflowDevelopmentCopy">Turned recurring production friction into Prompt Factory and LRC Visualizer, owning problem definition, product logic, interface decisions, testing, and iteration through AI-assisted development.</p>
+                  <div class="inline-proof"><strong>67–75%</strong><span data-i18n="workflowProof">less prompt work · lyric editing reduced from ~30 min to 1–3 min</span></div>
+                </article>
+                <article>
+                  <span class="area-number">03</span><h4 data-i18n="globalOperations">Global Content Operations</h4>
+                  <p data-i18n="globalOperationsCopy">Supported multilingual publishing, English copy review, push notifications, cold-start campaigns, polling, approvals, and release configuration across global channels.</p>
+                  <div class="inline-proof"><strong>291+</strong><span data-i18n="operationsProof">publishing/configuration tasks · four overseas platform accounts</span></div>
+                </article>
               </div>
+              <div class="experience-links"><span data-i18n="relatedWork">Related work</span><a href="#lrc-project">LRC Visualizer ↘</a><a href="#prompt-project">Prompt Factory ↘</a></div>
             </div>
           </article>
-
-          <aside class="window game-window">
-            <div class="titlebar compact"><div class="titlebar-label">play_time.dat</div><div class="window-controls" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div></div>
-            <div class="game-list">
-              <div><span>Sky</span><b>100H+</b><i style="--game: 94%"></i></div>
-              <div><span>Wuthering Waves</span><b>70H+</b><i style="--game: 72%"></i></div>
-              <div><span>Zelda: BOTW</span><b>70H+</b><i style="--game: 72%"></i></div>
-              <small data-i18n="gameNote">偏爱叙事型独立游戏，包括《主播女孩重度依赖》。</small>
-            </div>
-          </aside>
-
-          <aside class="window note-window">
-            <div class="titlebar compact"><div class="titlebar-label">fun_facts.txt</div><div class="window-controls" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div></div>
-            <ul>
-              <li><b data-i18n="factInstrument">三种乐器</b><span data-i18n="factInstrumentSub">钢琴 · 长号 · 古筝</span></li>
-              <li><b data-i18n="factEdit">2000+ 播放</b><span data-i18n="factEditSub">K‑Pop 女团舞台混剪</span></li>
-              <li><b data-i18n="factWriting">新概念作文二等奖</b><span>2024</span></li>
-            </ul>
-          </aside>
         </div>
       </section>
 
-      <section class="contact-section" aria-labelledby="contact-title">
-        <div class="window contact-window reveal">
-          <div class="titlebar"><div class="titlebar-label"><span class="mini-icon">✉</span> contact_me.exe</div><div class="window-controls" aria-hidden="true"><span>—</span><span>□</span><span>×</span></div></div>
-          <div class="contact-body">
-            <div><span class="micro-label">END OF FILE / LET'S TALK</span><h2 id="contact-title" data-i18n="contactTitle">一起做点好看的，也做点真正有用的。</h2><p data-i18n="contactCopy">如果你正在寻找懂内容、跨文化语境，并愿意亲手把流程做顺的人，欢迎联系我。</p></div>
-            <div class="contact-actions">
-              <a class="pixel-button primary" href="mailto:zoeyqian@usc.edu"><svg><use href="#i-mail" /></svg>zoeyqian@usc.edu</a>
-              <a class="pixel-button" href="https://github.com/y1ch3nq" target="_blank" rel="noreferrer"><svg><use href="#i-github" /></svg>@y1ch3nq</a>
-              <button class="pixel-button" id="print-page" type="button"><svg><use href="#i-download" /></svg><span data-i18n="savePdf">保存为 PDF</span></button>
+      <section class="content-section section-shell projects-section" id="projects" aria-labelledby="projects-title">
+        <div class="section-index reveal"><span>03</span><span data-i18n="sectionProjects">Projects</span></div>
+        <div class="section-content">
+          <header class="section-heading reveal">
+            <p class="micro-label" data-i18n="projectsKicker">SELECTED WORK</p>
+            <h2 id="projects-title" data-i18n="projectsTitle">Products to use. Strategies to act on.</h2>
+            <p data-i18n="projectsIntro">A focused collection spanning practical web tools, audience strategy, and media research.</p>
+          </header>
+
+          <div class="walkman-feature reveal">
+            <div class="walkman-stage">
+              <canvas id="walkman-canvas" aria-label="Interactive 3D portable music player used to browse projects"></canvas>
+              <div class="scene-caption"><span class="pulse-dot"></span><span data-i18n="walkmanInstruction">Press the 3D controls or use the buttons</span></div>
+            </div>
+            <div class="walkman-copy">
+              <span class="micro-label">PROJECT PLAYER · 4 TRACKS</span>
+              <div class="track-counter"><span id="track-number">01</span><i></i><span>04</span></div>
+              <p class="track-category" id="track-category">PRODUCT &amp; WEB PROJECTS</p>
+              <h3 id="track-title">LRC Visualizer</h3>
+              <p id="track-description">A browser-based lyric-video production tool that turns a repetitive editing workflow into a flexible, customizable system.</p>
+              <a class="text-link" id="track-link" href="#lrc-project"><span data-i18n="jumpProject">Jump to project</span> ↘</a>
+              <div class="player-controls" aria-label="Project player controls">
+                <button type="button" id="previous-track" aria-label="Previous project">←</button>
+                <button type="button" id="play-track" aria-label="Open selected project">↘</button>
+                <button type="button" id="next-track" aria-label="Next project">→</button>
+              </div>
             </div>
           </div>
+
+          <div class="project-category reveal">
+            <div class="category-title"><span>A</span><h3 data-i18n="productCategory">Product &amp; Web Projects</h3><i></i></div>
+
+            <article class="project-card flagship" id="lrc-project" data-project-index="0">
+              <div class="project-visual live-preview">
+                <img src="/images/lrc-interface.png" alt="LRC Visualizer interface showing project inputs, a vertical lyric-video preview, and typography controls" loading="lazy" />
+                <div class="preview-bar"><span><i></i><i></i><i></i></span><strong>LIVE PRODUCT PREVIEW</strong><a href="https://y1ch3nq.github.io/lrc-visualizer/" target="_blank" rel="noreferrer">OPEN ↗</a></div>
+              </div>
+              <div class="project-copy">
+                <div class="project-label"><span>01 / FLAGSHIP</span><span>2026 · LIVE</span></div>
+                <h3>LRC Visualizer</h3>
+                <p class="project-lede" data-i18n="lrcDescription">A browser-based lyric-video production tool that combines audio, timed lyrics, typography, color, layout, and export controls in one customizable workflow.</p>
+                <p class="project-role"><span data-i18n="roleLabel">Role</span><strong data-i18n="lrcRole">Product definition · Workflow design · Interface planning · Testing &amp; iteration</strong></p>
+                <div class="tag-list"><span>Product Design</span><span>Creative Tools</span><span>AI-Assisted Development</span></div>
+                <div class="card-actions">
+                  <a class="button button-primary" href="/projects/lrc-visualizer/"><span data-i18n="viewCaseStudy">View case study</span><span>→</span></a>
+                  <a class="button button-ghost" href="https://y1ch3nq.github.io/lrc-visualizer/" target="_blank" rel="noreferrer">Live demo ↗</a>
+                  <a class="button button-ghost" href="https://github.com/y1ch3nq/lrc-visualizer" target="_blank" rel="noreferrer">GitHub ↗</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card split" id="prompt-project" data-project-index="1">
+              <div class="project-copy">
+                <div class="project-label"><span>02 / WORKFLOW TOOL</span><span>2026 · IN PRODUCTION</span></div>
+                <h3>Prompt Factory</h3>
+                <p class="project-lede" data-i18n="promptDescription">A browser-based prompt assembly tool that turns reusable scene, character, action, camera, and style inputs into structured prompts for AI video production.</p>
+                <div class="project-detail-list">
+                  <p><span data-i18n="problemLabel">Problem</span><strong data-i18n="promptProblem">Repeated prompting, inconsistent formats, and slow partial revisions.</strong></p>
+                  <p><span data-i18n="decisionLabel">Decision</span><strong data-i18n="promptDecision">Separate prompts into adjustable components designed for reuse and batch production.</strong></p>
+                  <p><span data-i18n="outcomeLabel">Outcome</span><strong data-i18n="promptOutcome">Prompt development reduced from ~3–4 minutes to ~1 minute.</strong></p>
+                </div>
+                <div class="tag-list"><span>Workflow Automation</span><span>Prompt Systems</span><span>Product Design</span></div>
+              </div>
+              <div class="prompt-visual" aria-label="Prompt Factory interface concept">
+                <div class="prompt-top"><span>PROMPT FACTORY</span><i>READY</i></div>
+                <div class="prompt-fields"><span>01 · SCENE</span><span>02 · CHARACTER</span><span>03 · ACTION</span><span>04 · CAMERA</span><span>05 · STYLE</span></div>
+                <div class="prompt-output"><small>ASSEMBLED PROMPT</small><i></i><i></i><i></i><button type="button" tabindex="-1">GENERATE ↗</button></div>
+              </div>
+            </article>
+          </div>
+
+          <div class="project-category reveal">
+            <div class="category-title"><span>B</span><h3 data-i18n="strategyCategory">Marketing &amp; Media Strategy</h3><i></i></div>
+            <div class="strategy-grid">
+              <article class="strategy-card" id="hiphop-project" data-project-index="2">
+                <div class="strategy-art cultural-art"><span>華</span><span>अ</span><i></i><b>808</b></div>
+                <div class="project-label"><span>03 / ARTIST DEVELOPMENT</span><span>SEP—NOV 2025</span></div>
+                <h3 data-i18n="hiphopTitle">Cross-Cultural Hip-Hop Artist Development</h3>
+                <p data-i18n="hiphopDescription">Developed a hip-hop duo concept rooted in Chinese and Indian diasporic identities and Hawai‘i’s immigrant history, balancing cultural authenticity with commercial potential.</p>
+                <p class="team-line"><span data-i18n="projectType">Project type</span><strong data-i18n="hiphopType">Artist development &amp; marketing pitch · Team of 13</strong></p>
+                <ul><li data-i18n="hiphopPointOne">Audience: second-generation Asian diaspora listeners</li><li data-i18n="hiphopPointTwo">Cultural positioning, visual direction, launch strategy, and commercial viability</li></ul>
+                <div class="tag-list"><span>Audience Strategy</span><span>Cultural Positioning</span><span>Marketing</span></div>
+              </article>
+              <article class="strategy-card" id="research-project" data-project-index="3">
+                <div class="strategy-art research-art"><span>IMAGE</span><span>POWER</span><i></i><b>10 FILMS</b></div>
+                <div class="project-label"><span>04 / INDEPENDENT RESEARCH</span><span>AUG 2024—MAY 2025</span></div>
+                <h3 data-i18n="researchTitle">Female Pop Artist Media &amp; PR Narrative Analysis</h3>
+                <p data-i18n="researchDescription">Analyzed how female pop artists are constructed across biographical films and documentaries, focusing on victimization, sexualization, publicity, and reputation risk.</p>
+                <p class="team-line"><span data-i18n="methodLabel">Method</span><strong data-i18n="researchMethod">Qualitative content analysis + quantitative coding</strong></p>
+                <ul><li data-i18n="researchPointOne">Ten artist biopics and documentaries released from 2000–2024</li><li data-i18n="researchPointTwo">Focused comparison of <em>Amy</em> and <em>Back to Black</em></li></ul>
+                <div class="tag-list"><span>PR Strategy</span><span>Reputation Risk</span><span>Mixed Methods</span></div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-section section-shell skills-section" id="skills" aria-labelledby="skills-title">
+        <div class="section-index reveal"><span>04</span><span data-i18n="sectionSkills">Skills</span></div>
+        <div class="section-content">
+          <header class="section-heading reveal">
+            <p class="micro-label" data-i18n="skillsKicker">A WORKING INSTRUMENT</p>
+            <h2 id="skills-title" data-i18n="skillsTitle">Different keys. One coherent practice.</h2>
+            <p data-i18n="skillsIntro">Press the piano keys to move through the capabilities I combine in product and media work.</p>
+          </header>
+          <div class="piano-feature reveal">
+            <div class="piano-stage">
+              <canvas id="piano-canvas" aria-label="Interactive 3D piano keyboard for browsing skill categories"></canvas>
+              <div class="scene-caption"><span class="pulse-dot"></span><span data-i18n="pianoInstruction">Tap a key · Sound on</span></div>
+            </div>
+            <div class="skill-display" aria-live="polite">
+              <div class="skill-display-top"><span id="skill-index">01 / 05</span><span class="equalizer"><i></i><i></i><i></i><i></i></span></div>
+              <p class="micro-label" data-i18n="nowPlaying">NOW PLAYING</p>
+              <h3 id="skill-title">Product &amp; Strategy</h3>
+              <ul id="skill-list"><li>Product concept development</li><li>User and market research</li><li>Workflow design</li><li>Audience analysis</li><li>Marketing strategy</li><li>Media and PR analysis</li></ul>
+              <div class="skill-tabs" role="tablist" aria-label="Skill categories">
+                <button class="active" type="button" data-skill="0">01</button><button type="button" data-skill="1">02</button><button type="button" data-skill="2">03</button><button type="button" data-skill="3">04</button><button type="button" data-skill="4">05</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact section-shell" id="contact" aria-labelledby="contact-title">
+        <div class="contact-orbit" aria-hidden="true"><span>✦</span><span>○</span><span>✧</span></div>
+        <p class="micro-label reveal" data-i18n="contactKicker">LET’S CONNECT</p>
+        <h2 id="contact-title" class="reveal" data-i18n="contactTitle">Interested in product, media,<br />and creative technology?</h2>
+        <p class="reveal" data-i18n="contactCopy">I would be glad to connect and hear what you’re building.</p>
+        <a class="contact-email reveal" href="mailto:zoeyqian@usc.edu">zoeyqian@usc.edu <span>↗</span></a>
+        <div class="contact-links reveal">
+          <a href="https://github.com/y1ch3nq" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <span class="disabled-link" data-i18n="linkedinPlaceholder">LinkedIn · coming soon</span>
+          <button class="resume-trigger" type="button" data-i18n="resumeRequest">Resume · request a copy</button>
         </div>
       </section>
     </main>
 
-    <footer>
-      <span>© <span id="year">2026</span> Zoey Yichen Qian</span>
-      <span>DESIGNED WITH PIXELS &amp; PURPOSE</span>
+    <footer class="site-footer section-shell">
+      <span>© <span id="year"></span> ZOEY YICHEN QIAN</span>
+      <span data-i18n="footerLine">DESIGNED WITH ORDER · BUILT WITH CURIOSITY</span>
+      <a href="#introduction"><span data-i18n="backTop">BACK TO TOP</span> ↑</a>
     </footer>
 
-    <div class="toast" id="toast" role="status" aria-live="polite">邮箱已复制</div>
-    <script src="app.js?v=english-default"></script>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
   </body>
 </html>

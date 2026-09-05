@@ -1,3 +1,6 @@
+node_modules/
+dist/
 .review/
 .DS_Store
 *.log
+npm-debug.log*

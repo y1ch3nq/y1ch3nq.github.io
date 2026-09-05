@@ -1,19 +1,34 @@
 # Zoey Yichen Qian — Portfolio
 
-一个像素风但保持专业、清晰的个人简历与项目网站。静态 HTML/CSS/JavaScript 构建，无需安装依赖。
+A bilingual, design-led portfolio for Zoey Yichen Qian. English is the default language; Chinese is available through the navigation switch.
 
-## 本地预览
+The experience pairs a clear resume-like information flow with purposeful 3D interactions:
+
+- A draggable ceramic-blue cat in the introduction
+- A portable music player that browses selected projects
+- A piano that reveals skill categories and plays notes
+- A locally hosted WebGPU water study based on `jeantimex/webgpu-water`
+
+## Local development
 
 ```bash
-python3 -m http.server 4173
+npm install
+npm run dev
 ```
 
-浏览器打开 `http://localhost:4173`。
+Open the URL printed by Vite (normally `http://localhost:5173`).
 
-## 一键发布到 GitHub Pages
+## Production build
 
-双击 `发布到GitHub.command`。首次使用时，如果电脑没有安装并登录 GitHub CLI，脚本会打开 GitHub 的新建仓库页面；创建空仓库后回到终端按回车，后续更新只需再次双击脚本。
+```bash
+npm run build
+npm run preview
+```
 
-站点默认发布到：`https://y1ch3nq.github.io/`
+## One-click deployment
 
-GitHub Actions 工作流位于 `.github/workflows/pages.yml`，每次推送到 `main` 都会自动部署。
+Double-click `发布到GitHub.command`. It validates the production build, commits the current site, and pushes `main`. GitHub Actions then deploys `dist` to [y1ch3nq.github.io](https://y1ch3nq.github.io/).
+
+## Third-party credit
+
+The water study is based on Evan Wallace's WebGL Water and the WebGPU port by jeantimex. See `THIRD_PARTY_NOTICES.md` and `public/water-lab/LICENSE`.

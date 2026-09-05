@@ -31,9 +31,19 @@ if ! git remote get-url origin >/dev/null 2>&1; then
   fi
 fi
 
-git add index.html styles.css app.js package.json .github README.md "发布到GitHub.command"
+if ! command -v npm >/dev/null 2>&1; then
+  echo "未找到 Node.js / npm。请先安装 Node.js 22 或更新版本。"
+  read "?按回车退出..."
+  exit 1
+fi
+
+echo "正在安装依赖并检查正式版本..."
+npm install
+npm run build
+
+git add -A
 if ! git diff --cached --quiet; then
-  git commit -m "Publish Zoey portfolio"
+  git commit -m "Rebuild Zoey portfolio"
 else
   echo "没有新的网页改动，继续检查线上分支。"
 fi
