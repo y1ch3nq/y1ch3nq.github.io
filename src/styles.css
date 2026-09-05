@@ -182,7 +182,6 @@ img, canvas, iframe { display: block; max-width: 100%; }
 
 .cat-stage {
   position: relative;
-  overflow: hidden;
   min-height: 620px;
   border-radius: 50% 50% 42% 58% / 45% 42% 58% 55%;
   background:
@@ -438,6 +437,8 @@ img, canvas, iframe { display: block; max-width: 100%; }
   .hero h1 em { display: block; }
   .hero-statement { font-size: .94rem; }
   .cat-stage { width: 100%; min-height: min(120vw,560px); margin-top: 20px; }
+  .cat-stage .ring-one { inset: 12% 8%; transform: none; }
+  .cat-stage .ring-two { inset: 20% 12%; transform: none; }
   .water-feature { margin-top: 70px; }
   .water-heading { grid-template-columns: 1fr; gap: 16px; }
   .water-heading > p { margin-left: 0; }
