@@ -254,6 +254,33 @@ document.querySelectorAll(".resume-trigger").forEach((button) => button.addEvent
   showToast(language === "en" ? "The web-ready PDF is coming soon. Email me for a current copy." : "网页版 PDF 即将补充，欢迎邮件索取最新简历。 ");
 }));
 
+const motionCards = document.querySelectorAll(".motion-card");
+const cardObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add("is-inview");
+    cardObserver.unobserve(entry.target);
+  });
+}, { threshold: .18 });
+motionCards.forEach((card, index) => {
+  card.style.transitionDelay = `${index % 2 * 90}ms`;
+  cardObserver.observe(card);
+  card.addEventListener("pointermove", (event) => {
+    if (event.pointerType === "touch") return;
+    const rect = card.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width;
+    const y = (event.clientY - rect.top) / rect.height;
+    card.style.setProperty("--tilt-x", `${(0.5-y)*3.2}deg`);
+    card.style.setProperty("--tilt-y", `${(x-0.5)*3.2}deg`);
+    card.style.setProperty("--glow-x", `${x*100}%`);
+    card.style.setProperty("--glow-y", `${y*100}%`);
+  });
+  card.addEventListener("pointerleave", () => {
+    card.style.setProperty("--tilt-x", "0deg");
+    card.style.setProperty("--tilt-y", "0deg");
+  });
+});
+
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {

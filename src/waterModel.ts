@@ -49,7 +49,7 @@ export async function initPortfolioWater(canvas: HTMLCanvasElement | null): Prom
       shadowUniformBuffer, waterUniformBuffer, tileTexture, tileSampler, skyTexture, skySampler);
     water.updateWaterParameters(0, 0, 1.333, .16);
     for (let index = 0; index < 18; index += 1) {
-      water.addDrop(Math.random()*2-1, Math.random()*2-1, .035, index%2 ? .008 : -.008);
+      water.addDrop(Math.random()*.5-.25, Math.random()*.5-.25, .035, index%2 ? .016 : -.016);
     }
 
     let depthTexture: GPUTexture;

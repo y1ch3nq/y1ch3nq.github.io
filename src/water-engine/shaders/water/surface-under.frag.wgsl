@@ -103,7 +103,8 @@ fn getSurfaceRayColor(origin: vec3f, ray: vec3f, waterColor: vec3f) -> vec3f {
     // Portfolio adaptation: the pool and sphere are intentionally absent.
     // Every ray sees the open sky, preserving the original physical water
     // normals/refraction while removing all swimming-pool geometry.
-    var color = textureSampleLevel(skyTexture, skySampler, ray, 0.0).rgb;
+    let openSkyRay = normalize(vec3f(ray.x * 2.15, max(abs(ray.y), 0.28), ray.z * 2.15));
+    var color = textureSampleLevel(skyTexture, skySampler, openSkyRay, 0.0).rgb;
     let sunDir = normalize(light.direction);
     let spec = pow(max(0.0, dot(sunDir, ray)), 2400.0);
     color += vec3f(spec) * vec3f(6.0, 5.4, 4.6);
@@ -134,7 +135,7 @@ fn fs_main(@location(0) worldPos : vec3f) -> @location(0) vec4f {
     normal = -normal; // Flip normal for underwater
     let reflectedRay = reflect(incomingRay, normal);
     let refractedRay = refract(incomingRay, normal, waterUniforms.ior / IOR_AIR);
-    let fresnel = mix(waterUniforms.fresnelMin, 1.0, pow(1.0 - dot(normal, -incomingRay), 3.0));
+    let fresnel = clamp(mix(0.04, 0.3, pow(1.0 - dot(normal, -incomingRay), 3.0)), 0.04, 0.3);
 
     let reflectedColor = getSurfaceRayColor(worldPos, reflectedRay, UNDERwaterColor);
     let refractedColor = getSurfaceRayColor(worldPos, refractedRay, vec3f(1.0)) * vec3f(0.8, 1.0, 1.1);
