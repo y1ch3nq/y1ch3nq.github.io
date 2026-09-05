@@ -1,6 +1,10 @@
 import "./styles.css";
+import gsap from "gsap";
+import { Flip } from "gsap/Flip";
 import { initWalkmanScene, initPianoScene } from "./scenes.js";
 import { initPortfolioWater } from "./waterModel.ts";
+
+gsap.registerPlugin(Flip);
 
 const translations = {
   zh: {
@@ -46,6 +50,7 @@ const translations = {
     projectsKicker: "精选作品",
     projectsTitle: "可使用的产品，可行动的策略。",
     projectsIntro: "一组聚焦实用网页工具、受众策略与媒体研究的作品。",
+    projectSwitch: "切换项目",
     walkmanInstruction: "点击 3D 按键或下方控制键",
     jumpProject: "跳转到项目",
     productCategory: "产品与网页项目",
@@ -179,9 +184,10 @@ function renderTrack() {
   document.querySelector("#track-link").href = `#${track.target}`;
 }
 
-function changeTrack(direction) {
+function changeTrack(direction, animateDeck = true) {
   activeTrack = (activeTrack + direction + tracks.length) % tracks.length;
   renderTrack();
+  if (animateDeck) window.projectDeckShift?.(direction > 0);
 }
 
 function openTrack() {
@@ -254,32 +260,102 @@ document.querySelectorAll(".resume-trigger").forEach((button) => button.addEvent
   showToast(language === "en" ? "The web-ready PDF is coming soon. Email me for a current copy." : "网页版 PDF 即将补充，欢迎邮件索取最新简历。 ");
 }));
 
-const motionCards = document.querySelectorAll(".motion-card");
-const cardObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (!entry.isIntersecting) return;
-    entry.target.classList.add("is-inview");
-    cardObserver.unobserve(entry.target);
-  });
-}, { threshold: .18 });
-motionCards.forEach((card, index) => {
-  card.style.transitionDelay = `${index % 2 * 90}ms`;
-  cardObserver.observe(card);
-  card.addEventListener("pointermove", (event) => {
-    if (event.pointerType === "touch") return;
-    const rect = card.getBoundingClientRect();
-    const x = (event.clientX - rect.left) / rect.width;
-    const y = (event.clientY - rect.top) / rect.height;
-    card.style.setProperty("--tilt-x", `${(0.5-y)*3.2}deg`);
-    card.style.setProperty("--tilt-y", `${(x-0.5)*3.2}deg`);
-    card.style.setProperty("--glow-x", `${x*100}%`);
-    card.style.setProperty("--glow-y", `${y*100}%`);
-  });
-  card.addEventListener("pointerleave", () => {
-    card.style.setProperty("--tilt-x", "0deg");
-    card.style.setProperty("--tilt-y", "0deg");
-  });
+const projectCaterpillar = document.querySelector("#project-caterpillar");
+document.querySelectorAll("[data-project-index]").forEach((card) => {
+  card.classList.remove("motion-card", "is-inview");
+  card.classList.add("project-slide");
+  projectCaterpillar.append(card);
 });
+
+let projectDeckAnimating = false;
+function syncProjectDeck() {
+  const first = projectCaterpillar.querySelector(".project-slide:not(.project-slide-ghost)");
+  if (!first) return;
+  activeTrack = Number(first.dataset.projectIndex);
+  renderTrack();
+  document.querySelector("#project-position").textContent = `${String(activeTrack + 1).padStart(2, "0")} / 04`;
+  document.querySelectorAll("[data-project-dot]").forEach((dot) => {
+    dot.classList.toggle("active", Number(dot.dataset.projectDot) === activeTrack);
+  });
+}
+
+function shiftProjectDeck(forward = true, onComplete) {
+  if (projectDeckAnimating) return false;
+  projectDeckAnimating = true;
+  const cards = gsap.utils.toArray(".project-slide:not(.project-slide-ghost)", projectCaterpillar);
+  const edge = forward ? cards[0] : cards[cards.length - 1];
+  const movingCards = cards.filter((card) => card !== edge);
+  const state = Flip.getState(movingCards);
+  const ghost = edge.cloneNode(true);
+  ghost.classList.add("project-slide-ghost");
+  ghost.removeAttribute("data-project-index");
+  gsap.set(ghost, {
+    position: "absolute",
+    zIndex: 4,
+    left: edge.offsetLeft,
+    top: edge.offsetTop,
+    width: edge.offsetWidth,
+    height: edge.offsetHeight,
+    margin: 0,
+  });
+  projectCaterpillar.append(ghost);
+
+  if (forward) {
+    projectCaterpillar.append(edge);
+  } else {
+    projectCaterpillar.prepend(edge);
+  }
+  gsap.set(edge, {
+    opacity: 0,
+    scale: 0,
+    transformOrigin: forward ? "bottom right" : "bottom left",
+  });
+
+  Flip.from(state, {
+    targets: movingCards,
+    duration: .66,
+    ease: "power2.inOut",
+    onComplete: () => {
+      ghost.remove();
+      gsap.set(movingCards, { clearProps: "transform" });
+      gsap.set(edge, { clearProps: "opacity,transform,transformOrigin" });
+      projectDeckAnimating = false;
+      syncProjectDeck();
+      onComplete?.();
+    },
+  });
+  gsap.to(edge, {
+    opacity: 1,
+    scale: 1,
+    duration: .5,
+    ease: "power2.out",
+  });
+  gsap.to(ghost, {
+    opacity: 0,
+    scale: 0,
+    duration: .46,
+    ease: "power2.in",
+    transformOrigin: forward ? "bottom left" : "bottom right",
+  });
+  return true;
+}
+window.projectDeckShift = shiftProjectDeck;
+document.querySelector("#project-next").addEventListener("click", () => shiftProjectDeck(true));
+document.querySelector("#project-prev").addEventListener("click", () => shiftProjectDeck(false));
+document.querySelectorAll("[data-project-dot]").forEach((dot) => dot.addEventListener("click", () => {
+  if (projectDeckAnimating) return;
+  const target = Number(dot.dataset.projectDot);
+  const forwardDistance = (target - activeTrack + tracks.length) % tracks.length;
+  if (forwardDistance === 0) return;
+  const forward = forwardDistance <= tracks.length / 2;
+  let steps = forward ? forwardDistance : tracks.length - forwardDistance;
+  const advance = () => {
+    steps -= 1;
+    shiftProjectDeck(forward, steps > 0 ? advance : undefined);
+  };
+  advance();
+}));
+syncProjectDeck();
 
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
