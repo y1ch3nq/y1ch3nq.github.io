@@ -107,7 +107,9 @@ fn getSurfaceRayColor(origin: vec3f, ray: vec3f, waterColor: vec3f) -> vec3f {
     var color = textureSampleLevel(skyTexture, skySampler, openSkyRay, 0.0).rgb;
     let sunDir = normalize(light.direction);
     let spec = pow(max(0.0, dot(sunDir, ray)), 2400.0);
-    color += vec3f(spec) * vec3f(6.0, 5.4, 4.6);
+    // A restrained specular core keeps the sun visible without the large,
+    // blown-out disc produced by the original high-intensity values.
+    color += vec3f(spec) * vec3f(1.6, 1.42, 1.18);
     color *= mix(vec3f(0.72, 0.93, 1.04), vec3f(1.0), max(ray.y, 0.0));
     return color;
 }
